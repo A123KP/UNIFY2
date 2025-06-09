@@ -21,6 +21,21 @@
             <div class="register-form">
                 <h3 class="fw-bold">Create an account</h3>
                 <p class="text-muted mb-4">Enter your details below</p>
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        @TempData["ErrorMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        @TempData["SuccessMessage"]
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                }
+
                 <form method="post" asp-action="RegisterUser" id="registerForm">
                     <div class="mb-3">
                         <input type="text" class="form-control custom-input" id="Username" name="Username" placeholder="Username" required>
@@ -71,5 +86,16 @@
 
             return true;
         });
+        
+// Scroll to alert if present
+        $(document).ready(function () {
+            const alertBox = $('.alert');
+            if (alertBox.length) {
+                $('html, body').animate({
+                    scrollTop: alertBox.offset().top - 20
+                }, 500);
+            }
+        });
+
     </script>
 }

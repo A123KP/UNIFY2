@@ -1,0 +1,257 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Shopping Cart";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/Cart/Cart.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+}
+
+<div class="cart-page-container">
+    <div class="breadcrumb-container">
+        <span><a asp-controller="Home" asp-action="Index">Home</a></span> / <span>Cart</span>
+    </div>
+
+    <div class="cart-content-wrapper">
+        <div class="cart-items-container">
+            <table class="cart-table">
+                <thead>
+                    <tr>
+                        <th class="th-product">Product</th>
+                        <th class="th-price">Price</th>
+                        <th class="th-quantity">Quantity</th>
+                        <th class="th-subtotal">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="cartTableBody">
+                </tbody>
+            </table>
+
+            <div class="cart-page-actions">
+                <a asp-controller="Home" asp-action="Index" class="button return-shop-btn">Return To Shop</a>
+                <button class="button clear-cart-btn" onclick="clearClientCart()">Clear Cart</button>
+            </div>
+        </div>
+
+        <div class="cart-summary-container">
+            <h3>Cart Total</h3>
+            <div class="summary-row">
+                <span>Subtotal:</span>
+                <span class="summary-value subtotal-overall">₹0.00</span>
+            </div>
+            <div class="summary-ship">
+                <span>Shipping:</span>
+                <span class="summary-value">Free</span>
+            </div>
+            <div class="total-row">
+                <span>Total:</span>
+                <span class="summary-value total-overall">₹0.00</span>
+            </div>
+            <button class="button checkout-btn" id="proceedToCheckoutBtn">Proceed to checkout</button>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        // Use the global cart key defined in _Layout.cshtml for consistency
+        const CART_KEY = "userCart";
+        const MAX_QUANTITY_PER_ITEM = 5;
+
+        // --- Core Functions ---
+        function getClientCart() {
+            return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+        }
+
+        function setClientCart(cart) {
+            localStorage.setItem(CART_KEY, JSON.stringify(cart));
+            renderCartTable();
+            updateOverallCartTotals();
+            if (window.updateCartCountInHeaderShared) {
+                window.updateCartCountInHeaderShared();
+            }
+        }
+
+        // --- Custom Modal & Confirmation Logic ---
+        function showClearCartConfirmModal() {
+            $('.modal-overlay').remove();
+            const modalHtml = `
+                <div class="modal-overlay">
+                    <div class="confirm-modal">
+                        <i class="bi bi-exclamation-triangle-fill modal-icon"></i>
+                        <h4 class="modal-title">Are you sure?</h4>
+                        <p class="modal-message">This will remove all items from your cart. This action cannot be undone.</p>
+                        <div class="modal-actions">
+                            <button class="btn btn-cancel" id="cancel-clear-btn">Cancel</button>
+                            <button class="btn btn-confirm-delete" id="confirm-clear-btn">Yes, Clear Cart</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $('body').append(modalHtml);
+            const overlay = $('.modal-overlay');
+            setTimeout(() => overlay.addClass('active'), 10);
+
+            $('#confirm-clear-btn').on('click', function() {
+                setClientCart([]);
+                closeModal();
+            });
+
+            $('#cancel-clear-btn, .modal-overlay').on('click', function(e) {
+                if (e.target !== this && $(e.target).closest('.confirm-modal').length > 0) return;
+                closeModal();
+            });
+        }
+
+        function showInfoModal(title, message) {
+            $('.modal-overlay').remove();
+            const modalHtml = `
+                <div class="modal-overlay">
+                    <div class="confirm-modal">
+                        <i class="bi bi-x-circle-fill modal-icon" style="color: #DB4444;"></i>
+                        <h4 class="modal-title">${title}</h4>
+                        <p class="modal-message">${message}</p>
+                        <div class="modal-actions">
+                            <button class="btn btn-danger" id="info-ok-btn">OK</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            $('body').append(modalHtml);
+            const overlay = $('.modal-overlay');
+            setTimeout(() => overlay.addClass('active'), 10);
+
+            $('#info-ok-btn, .modal-overlay').on('click', function (e) {
+                if (e.target !== this && $(e.target).closest('.confirm-modal').length > 0) return;
+                closeModal();
+            });
+        }
+
+        function closeModal() {
+            const overlay = $('.modal-overlay');
+            overlay.removeClass('active');
+            setTimeout(() => overlay.remove(), 300);
+        }
+
+        // --- Cart Modification Functions ---
+        function clearClientCart() {
+            const cart = getClientCart();
+
+            // If the cart is empty, do nothing and exit the function.
+            if (cart.length === 0) {
+                return;
+            }
+
+            // If the cart is NOT empty, show the confirmation popup.
+            showClearCartConfirmModal();
+        }
+
+        function updateItemQuantity(productId, change) {
+            let cart = getClientCart();
+            const itemIndex = cart.findIndex(p => p.productId === productId);
+            if (itemIndex > -1) {
+                let newQuantity = cart[itemIndex].quantity + change;
+                if (newQuantity > MAX_QUANTITY_PER_ITEM) {
+                    alert(`You can only order a maximum of ${MAX_QUANTITY_PER_ITEM} units for this item.`);
+                    newQuantity = MAX_QUANTITY_PER_ITEM;
+                }
+                if (newQuantity <= 0) {
+                    cart.splice(itemIndex, 1);
+                } else {
+                    cart[itemIndex].quantity = newQuantity;
+                }
+                setClientCart(cart);
+            }
+        }
+
+        function removeItemFromCart(productId, event) {
+            event.preventDefault();
+            let cart = getClientCart();
+            const updatedCart = cart.filter(item => item.productId !== productId);
+            setClientCart(updatedCart);
+        }
+
+        // --- UI Rendering Functions ---
+        function renderCartTable() {
+            const cart = getClientCart();
+            const tbody = $('#cartTableBody');
+            tbody.empty();
+            if (cart.length === 0) {
+                tbody.html('<tr><td colspan="4" style="text-align:center; padding: 20px;">Your cart is empty.</td></tr>');
+                // NOTE: The line that disabled the button has been removed from here.
+                return;
+            }
+            // NOTE: The line that enabled the button has been removed from here.
+            cart.forEach(item => {
+                const itemSubtotal = item.price * item.quantity;
+                const rowHtml = `
+                    <tr data-product-id="${item.productId}">
+                        <td class="td-product" data-label="Product"><div class="product-info"><a href="#" class="remove-item-icon" title="Remove item" onclick="removeItemFromCart(${item.productId}, event)">x</a><span class="product-name">${item.name}</span></div></td>
+                        <td class="td-price" data-label="Price">₹${item.price.toLocaleString('en-IN')}</td>
+                        <td class="td-quantity" data-label="Quantity"><div class="quantity-spinner-wrapper"><input type="text" class="quantity-input" value="${item.quantity.toString().padStart(2, '0')}" readonly><div class="spinner-buttons"><button type="button" class="spinner-button quantity-plus" title="Increase quantity"><i class="bi bi-chevron-up"></i></button><button type="button" class="spinner-button quantity-minus" title="Decrease quantity"><i class="bi bi-chevron-down"></i></button></div></div></td>
+                        <td class="td-subtotal" data-label="Subtotal">₹${itemSubtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}</td>
+                    </tr>
+                `;
+                tbody.append(rowHtml);
+            });
+        }
+
+        function updateOverallCartTotals() {
+            let overallSubtotal = 0;
+            const cart = getClientCart();
+            cart.forEach(item => {
+                overallSubtotal += (item.price * item.quantity);
+            });
+            const overallTotal = overallSubtotal;
+            $('.subtotal-overall').text(`₹${overallSubtotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`);
+            $('.total-overall').text(`₹${overallTotal.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`);
+        }
+
+        // --- Document Ready - Event Handlers ---
+        $(document).ready(function () {
+            renderCartTable();
+            updateOverallCartTotals();
+
+            $('#cartTableBody').on('click', '.quantity-plus', function() {
+                const productId = $(this).closest('tr').data('product-id');
+                updateItemQuantity(productId, 1);
+            });
+
+            $('#cartTableBody').on('click', '.quantity-minus', function() {
+                const productId = $(this).closest('tr').data('product-id');
+                updateItemQuantity(productId, -1);
+            });
+
+            // THIS IS THE MODIFIED CLICK HANDLER
+            $('#proceedToCheckoutBtn').on('click', function () {
+                const cartItems = getClientCart();
+
+                // First, check if the cart is empty
+                if (cartItems.length === 0) {
+                    // If it is, show the info popup and stop.
+                    showInfoModal("Cart is Empty", "Please add items to your cart before proceeding to checkout.");
+                    return; 
+                }
+                
+                // If the cart is NOT empty, continue with the checkout process.
+                const checkoutData = cartItems.map(item => ({ productId: item.productId, quantity: item.quantity }));
+                $.ajax({
+                    url: '@Url.Action("ProcessCheckout", "Cart")',
+                    type: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify(checkoutData),
+                    success: function (response) {
+                        if (response.success) {
+                            window.location.href = response.redirectUrl;
+                        } else {
+                            alert("Error: " + (response.message || "Could not process checkout."));
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("An error occurred. Please try again. Details: " + xhr.responseText);
+                    }
+                });
+            });
+        });
+    </script>
+}

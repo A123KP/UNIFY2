@@ -1,484 +1,537 @@
-﻿/* cart.css */
+﻿/*
+=================================================================
+    FUN & INTERACTIVE CART STYLING (cart.css)
+    - With Original Layout Positioning Restored -
+=================================================================
+*/
 
-/* General Body Styles (Mimicking Bootstrap's base) */
+/* --- Theme & Animations --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary-red: #DB4444;
+    --primary-red-dark: #c53030;
+    --light-red-bg: #FEEFEF;
+    --text-dark: #212529;
+    --text-light: #6c757d;
+    --border-color: #e0e0e0;
+    --background-light: #f8f9fa;
+    --font-family: 'Poppins', sans-serif;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* --- General Body & Page Container --- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-family: var(--font-family);
     font-size: 1rem;
     font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
+    line-height: 1.6;
+    color: var(--text-dark);
     background-color: #ffffff;
-    margin: 0;
-    padding: 0;
 }
 
-/* Overall Cart Page Container - now primarily for page-level padding/vertical margin */
 .cart-page-container {
-    width: 100%;
-    padding-right: 15px; /* Standard page padding */
-    padding-left: 15px; /* Standard page padding */
-    box-sizing: border-box;
-    margin-top: 20px;
-    margin-bottom: 20px;
+    padding: 0 15px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 0.5s ease-out forwards;
 }
 
-/* Breadcrumb Styling - now self-contained for width and centering */
 .breadcrumb-container {
-    max-width: 1140px; /* Centered content block */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 1.875rem; /* 30px */
-    padding: 0.625rem 0; /* Padding for its content, not affecting overall centering */
-    font-size: 0.875rem; /* 14px */
-    color: #6c757d;
+    max-width: 1140px;
+    margin: 0 auto 2rem auto;
+    font-size: 0.9rem;
+    color: var(--text-light);
 }
 
-    .breadcrumb-container span:first-child {
-        color: #6c757d;
+    .breadcrumb-container a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
     }
+
+        .breadcrumb-container a:hover {
+            color: var(--primary-red);
+        }
 
     .breadcrumb-container span:last-child {
-        color: #343a40; /* Darker for current page */
-        font-weight: 500;
+        color: var(--text-dark);
+        font-weight: 600;
     }
 
-/* Main content wrapper - Allows children to stack vertically, as requested */
+
+/* --- Main Cart Layout --- */
+/* Restored original block layout to maintain positions */
 .cart-content-wrapper {
-    max-width: 1140px; /* Centered content block */
-    margin-left: auto;
-    margin-right: auto;
-    padding: 0 15px; /* Add padding to prevent content sticking to edges */
-    box-sizing: border-box;
-    /* No display: flex; here, allowing elements to stack naturally */
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 15px;
 }
 
-/* Cart Items Styling - Make it take full width, as requested */
 .cart-items-container {
-    width: 100%; /* Make it take full width */
-    position: relative;
+    width: 100%;
 }
 
+
+/* --- Cart Table Styling --- */
 .cart-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 1.875rem; /* 30px */
-    background-color: transparent;
+    border-collapse: separate;
+    border-spacing: 0 10px;
 }
 
-    .cart-table th, .cart-table td {
-        padding: 15px;
-        border-bottom: 1px solid #eee;
+    .cart-table thead {
         text-align: left;
     }
 
     .cart-table th {
-        font-size: 1rem; /* 16px */
-        font-weight: 400;
-        color: #000000;
-        border-top: none;
-        border-bottom-width: 1px;
-        border-color: #BDBDBD;
-        padding-bottom: 0.75rem; /* 12px */
+        padding: 15px;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 1.1rem;
     }
 
-.th-product {
-    width: 48%;
-}
+    .cart-table tbody tr {
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.th-price {
-    width: 17%;
-    text-align: left;
-    padding-left: 0.75rem;
-}
+        .cart-table tbody tr:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
 
-.th-quantity {
-    width: 18%;
-    text-align: left;
-    padding-left: 0.75rem;
-}
+    .cart-table td {
+        padding: 20px 15px;
+        vertical-align: middle;
+    }
 
-.th-subtotal {
-    width: 17%;
-    text-align: left;
-    padding-left: 0.75rem;
-}
+        .cart-table td:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        .cart-table td:last-child {
+            border-radius: 0 8px 8px 0;
+        }
 
 .product-info {
     display: flex;
     align-items: center;
+    gap: 15px;
 }
-
-.remove-item-icon {
-    /* Base appearance & Theme */
-    color: #DB4444; /* Red color for the 'x' text/icon */
-    background-color: #FEEFEF; /* Light red background */
-    border: 1px solid #DB4444; /* Red border */
-    border-radius: 50%; /* Perfectly circular shape */
-    /* Sizing and Alignment */
-    width: 24px; /* Slightly larger for better clickability & presence */
-    height: 24px; /* Maintain aspect ratio */
-    display: inline-flex; /* Allows centering of content */
-    align-items: center; /* Vertically center 'x' */
-    justify-content: center; /* Horizontally center 'x' */
-    /* Text ('x') Styling */
-    font-size: 1rem; /* Clearer 'x', adjust if too large/small */
-    font-weight: bold; /* Bolder 'x' for visibility */
-    line-height: 1; /* Ensure 'x' is centered if it's text */
-    text-decoration: none; /* Remove underline if it's an <a> tag */
-    /* Positioning */
-    margin-right: 1.25rem; /* Your existing margin */
-    /* Interactivity */
-    cursor: pointer;
-    /* Initial animation state (hidden and slightly scaled down) */
-    opacity: 0; /* Initially hidden (as per your current setup) */
-    transform: scale(0.7); /* Start a bit smaller for a pop-in effect */
-    /* Smooth transitions for all animated properties */
-    transition: opacity 0.25s ease-out, transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), /* Elastic pop effect */
-    background-color 0.3s ease-in-out, color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* When the table row (tr) is hovered, the remove icon appears */
-.cart-table tbody tr:hover .remove-item-icon {
-    opacity: 1; /* Fade it in */
-    transform: scale(1); /* Pop to normal size with elastic easing */
-}
-
-/* Hover effect directly on the remove icon itself for more engaging feedback */
-.remove-item-icon:hover {
-    background-color: #DB4444; /* Fill with main red on hover */
-    color: #FFFFFF; /* 'x' becomes white */
-    transform: scale(1.25) rotate(180deg); /* Enlarge and rotate dramatically for a fun effect */
-    box-shadow: 0px 4px 10px rgba(219, 68, 68, 0.5); /* Add a pronounced red glow */
-}
-
-/* Optional: Active state for a "pressed" feel when clicked */
-.remove-item-icon:active {
-    background-color: #c53030; /* Darker red when pressed */
-    transform: scale(1.1) rotate(180deg); /* Slightly smaller than hover, maintains rotation */
-    box-shadow: 0px 2px 5px rgba(219, 68, 68, 0.4); /* Reduce glow when pressed */
-    transition-duration: 0.1s; /* Make active state snappier */
-}
-/* Product image styling is omitted as <img> tag is commented out in HTML */
 
 .product-name {
-    font-size: 1rem; /* 16px */
-    color: #000000;
+    font-weight: 600;
 }
 
-.td-price, .td-subtotal {
-    font-size: 1rem; /* 16px */
-    color: #000000;
-    text-align: left;
-    padding-left: 0.75rem;
+/* --- Remove Item Icon --- */
+.remove-item-icon {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--primary-red);
+    background-color: var(--light-red-bg);
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-decoration: none;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease, background-color 0.3s, color 0.3s;
 }
 
-.td-quantity {
-    text-align: left;
-    padding-left: 0.75rem;
+.cart-table tbody tr:hover .remove-item-icon {
+    transform: scale(1) rotate(360deg);
+    opacity: 1;
 }
 
-.quantity-input {
-    width: 72px;
+.remove-item-icon:hover {
+    background-color: var(--primary-red);
+    color: #fff;
+    transform: scale(1.2) rotate(360deg);
+}
+
+.remove-item-icon:active {
+    transform: scale(0.9) rotate(360deg);
+    transition: transform 0.1s ease;
+}
+
+
+/* --- Quantity Spinner (with layout fix) --- */
+.quantity-spinner-wrapper {
+    display: inline-flex;
+    align-items: center;
+    border: 2px solid var(--border-color);
+    border-radius: 25px; /* Pill shape */
     height: 44px;
-    padding: 0.375rem 0.75rem;
-    text-align: center;
-    border: 1px solid #BDBDBD;
-    border-radius: 0.25rem;
-    font-size: 1rem; /* 16px */
-    line-height: 1.5;
-    box-sizing: border-box;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: 0; /* Remove padding from wrapper */
+    overflow: hidden; /* CRITICAL: This clips the children to the pill shape */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-    .quantity-input:focus {
-        border-color: #80bdff;
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+    .quantity-spinner-wrapper:hover {
+        border-color: var(--primary-red);
+        box-shadow: 0 0 0 3px rgba(219, 68, 68, 0.15);
     }
 
-    .quantity-input[type=number] {
+    .quantity-spinner-wrapper .quantity-input {
+        width: 45px;
+        height: 100%;
+        border: none;
+        border-right: 1px solid var(--border-color); /* Separator line */
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+        background: transparent;
+        outline: none;
+        color: var(--text-dark);
         -moz-appearance: textfield;
+        transition: border-color 0.3s ease;
     }
 
-    .quantity-input::-webkit-outer-spin-button,
-    .quantity-input::-webkit-inner-spin-button {
+    .quantity-spinner-wrapper:hover .quantity-input {
+        border-color: transparent; /* Hide separator on hover for a cleaner look */
+    }
+
+    .quantity-spinner-wrapper .quantity-input::-webkit-outer-spin-button,
+    .quantity-spinner-wrapper .quantity-input::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
     }
 
+    .quantity-spinner-wrapper .spinner-buttons {
+        display: flex;
+        flex-direction: column; /* Stack buttons vertically */
+        height: 100%;
+    }
+
+    .quantity-spinner-wrapper .spinner-button {
+        background: transparent;
+        border: none;
+        color: var(--text-light);
+        cursor: pointer;
+        width: 35px; /* Width of the button area */
+        flex: 1; /* Make both buttons share the vertical space equally */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+        .quantity-spinner-wrapper .spinner-button:first-child {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+    .quantity-spinner-wrapper:hover .spinner-button:first-child {
+        border-color: transparent;
+    }
+
+    .quantity-spinner-wrapper .spinner-button:hover {
+        background-color: var(--light-red-bg);
+        color: var(--primary-red);
+    }
+
+    .quantity-spinner-wrapper .spinner-button i {
+        font-size: 0.9rem;
+        line-height: 1;
+    }
+
+/* --- Cart Page Buttons --- */
 .cart-page-actions {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 2.5rem; /* 40px */
-    margin-top: 0.625rem; /* 10px */
+    margin-top: 2rem;
 }
 
 .button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-weight: 500;
-    color: #212529;
-    text-align: center;
-    vertical-align: middle;
+    font-weight: 600;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 2px solid;
     cursor: pointer;
-    user-select: none;
-    background-color: transparent;
-    border: 1px solid transparent;
-    padding: 0.8rem 1.875rem;
-    font-size: 1rem; /* 16px */
-    line-height: 1.5;
-    border-radius: 0.25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    height: 56px;
-    box-sizing: border-box;
+    transition: all 0.3s ease;
+    transform: translateY(0);
 }
 
-.return-shop-btn,
-.clear-cart-btn {
-    color: #000000;
-    border-color: #BDBDBD;
-    background-color: #ffffff;
-}
-
-    .return-shop-btn:hover,
-    .clear-cart-btn:hover {
-        color: #ffffff;
-        background-color: #DB4444;
-        border-color: #888888;
+    .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     }
 
-/* Coupon Area styling is omitted as the HTML for it is not present */
+    .button:active {
+        transform: translateY(-1px);
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+.return-shop-btn, .clear-cart-btn {
+    border-color: var(--text-dark);
+    color: var(--text-dark);
+    background-color: #fff;
+}
+
+    .return-shop-btn:hover, .clear-cart-btn:hover {
+        background-color: var(--text-dark);
+        color: #fff;
+    }
+
+/* --- Cart Summary Box (with original positioning restored) --- */
 .cart-summary-container {
-    position: relative;
-    box-sizing: border-box;
-    padding: 10px;
-    border-radius: 3px;
-    height: fit-content; /* Allows the box to size to its content */
-    margin-top: 0px;
-    margin-left: 655px;
-    width: calc(100% - 655px); /* Calculate width based on remaining space. Note: this will only look 'correct' at the exact width where 100% is 1140px. */
-    max-width: 485px; /* Explicit max-width for better control when content wrapper is 1140px (1140 - 655 = 485) */
-    /* Restored styles for visual consistency with a summary box */
-    /* Restored light grey background */
-    border: 2px solid #000000; /* Consistent border color from the image */
-    text-align: center; /* THIS IS THE KEY CHANGE TO CENTER THE BUTTON */
+    border: 2px solid #000;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    text-align: center;
+    /* Restoring original layout method */
+    width: 485px;
+    float: right; /* Use float to position to the right */
+    margin-top: 50px; /* Adjust as needed to align with the top of the table actions */
 }
 
-    .cart-summary-container h3 {
-        font-size: 1.25rem; /* 20px */
-        font-weight: 500;
-        color: #000000;
-        margin-top: 0;
-        margin-bottom: 1.25rem; /* 20px */
-        /* Restored border for heading */
-        padding-bottom: 1rem; /* 16px - Restored padding */
+/* Add a clearfix to the parent to contain the floated summary box */
+.cart-content-wrapper::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.cart-summary-container h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    position: relative;
+}
+
+    .cart-summary-container h3::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50px;
+        height: 3px;
+        background: linear-gradient(90deg, var(--primary-red), #ff7e5f);
+        border-radius: 2px;
     }
 
-.summary-row {
+.summary-row, .summary-ship, .total-row {
     display: flex;
     justify-content: space-between;
-    font-size: 1rem; /* 16px */
-    color: #000000;
-    border-bottom: 2px solid #E0E0E0;
-    margin-bottom: 10px;
-    padding-bottom: 10px; /* Added padding for space between text and border */
-}
-
-.summary-ship {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1rem; /* 16px */
-    color: #000000;
-    border-bottom: 2px solid #E0E0E0;
-    margin-bottom: 5px;
-    padding-bottom: 10px; /* Added padding for space between text and border */
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
 }
 
 .total-row {
-    display: flex; /* Added display flex for consistent layout with summary rows */
-    justify-content: space-between; /* Added for consistent layout */
-    font-weight: 500; /* Ensured font weight for total row */
-    margin-top: 1rem;
-    padding-top: 1rem;
-    /* Restored border for total row */
-}
-
-.summary-row .summary-value {
-    font-weight: 400;
-}
-
-.total-row .summary-value {
-    font-weight: 500;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-top: 2px solid var(--text-dark);
+    margin-top: 10px;
+    border-bottom: none;
 }
 
 .checkout-btn {
+    width: 100%;
+    margin-top: 1.5rem;
     color: #fff;
-    background-color: #DB4444;
-    border-color: #DB4444;
-    width: 70%; /* Keeping your specified width */
-    font-weight: 500;
-    /* This margin is now less critical for centering, but keeps top spacing */
-    margin-top: 1.75rem;
-    /* margin: 1.75rem auto 0 auto; could still be used, but text-align: center on parent is the primary method */
+    border-color: var(--primary-red);
+    background: linear-gradient(45deg, var(--primary-red), #e85a5a);
+    font-size: 1.1rem;
+    padding: 1rem;
 }
 
     .checkout-btn:hover {
-        color: #fff;
-        background-color: #c53030;
-        border-color: #b82c2c;
+        border-color: var(--primary-red-dark);
+        box-shadow: 0 0 20px rgba(219, 68, 68, 0.5);
     }
 
-/* Responsive Adjustments for smaller screens */
-@media (max-width: 991.98px) { /* Bootstrap's 'lg' breakpoint */
-    /* When screen is smaller, remove fixed margin and make it full width */
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 991.98px) {
     .cart-summary-container {
-        margin-left: auto; /* Remove fixed margin */
-        width: 100%; /* Take full width */
-        max-width: 100%; /* Ensure it doesn't exceed 100% */
-        margin-top: 1.875rem; /* Add space when stacked below */
+        float: none; /* Disable float */
+        width: 100%; /* Full width */
+        margin-left: 0;
+        margin-top: 40px; /* Add space when it stacks below */
     }
 }
 
-@media (max-width: 767.98px) { /* Bootstrap's 'md' breakpoint */
-    .cart-page-actions {
-        flex-direction: column;
-        gap: 0.9375rem; /* 15px */
-        align-items: stretch;
-    }
-
-    .return-shop-btn, .clear-cart-btn {
-        width: 100%;
-    }
-
-    .th-product, .th-price, .th-quantity, .th-subtotal,
-    .td-price, .td-subtotal, .td-quantity {
-        text-align: left;
-        padding-left: 0.5rem;
-    }
-
-    .remove-item-icon {
-        opacity: 1;
-    }
-}
-
-@media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
+@media (max-width: 767.98px) {
     .cart-table thead {
         display: none;
     }
 
-    .cart-table tbody tr {
+    .cart-table tbody tr, .cart-table tbody tr:hover {
         display: block;
-        margin-bottom: 1.25rem; /* 20px */
-        border: 1px solid #dee2e6;
-        border-radius: 0.25rem;
-        padding: 0.9375rem; /* 15px */
+        margin-bottom: 1.5rem;
+        border: 1px solid var(--border-color);
+        padding: 1rem;
+        transform: none;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .cart-table tbody td {
-        display: block;
-        text-align: right !important;
-        border-bottom: 1px dashed #eee;
-        position: relative;
-        padding-left: 45% !important;
-        padding-top: 0.5rem;
-        padding-bottom: 0.5rem;
+    .cart-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        text-align: right;
+        padding: 10px 0;
+        border-bottom: 1px dashed #f0f0f0;
     }
 
-        .cart-table tbody td:last-child {
+        .cart-table td:last-child {
             border-bottom: none;
         }
 
-        .cart-table tbody td::before {
+        .cart-table td::before {
             content: attr(data-label);
-            position: absolute;
-            left: 0.9375rem; /* 15px */
-            width: calc(45% - 1.875rem);
-            padding-right: 0.625rem; /* 10px */
-            font-weight: 700;
+            font-weight: 600;
             text-align: left;
-            white-space: nowrap;
-            font-size: 0.8125rem; /* 13px */
-            color: #495057;
         }
 
     .td-product {
-        padding-left: 0.9375rem !important;
-        text-align: left !important;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
         .td-product::before {
             display: none;
         }
 
-    .td-quantity .quantity-input {
-        float: right;
-        width: 60px;
+    .remove-item-icon {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .cart-page-actions {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .button {
+        width: 100%;
     }
 }
+/*
+=================================================================
+    NEW: CUSTOM CONFIRMATION POPUP STYLES
+=================================================================
+*/
 
-.quantity-spinner-wrapper {
+/* This is the background overlay. It's shared with other potential modals. */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
     display: flex;
     align-items: center;
-    border: 1px solid #ccc; /* Light grey border */
-    border-radius: 5px; /* Slightly rounded corners */
-    overflow: hidden; /* Ensures contents stay within bounds */
-    width: 100px; /* Adjust width as needed to match the image precisely */
-    height: 40px; /* Adjust height to match your design precisely */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-    .quantity-spinner-wrapper .quantity-input {
-        flex-grow: 1; /* Allows the input to take available space */
-        border: none; /* Remove default input border */
-        text-align: center;
-        font-size: 1rem;
-        padding: 0; /* Remove default padding */
-        height: 100%; /* Make input fill the wrapper height */
-        outline: none; /* Remove focus outline */
-        background-color: transparent; /* No background */
-        -moz-appearance: textfield; /* Remove Firefox number input arrows */
-        color: #333; /* Darker text for the quantity */
-        font-weight: 500; /* Slightly bolder for clarity */
+    .modal-overlay.active {
+        opacity: 1;
+        visibility: visible;
     }
 
-        /* Hide default number input arrows for Webkit (Chrome, Safari) */
-        .quantity-spinner-wrapper .quantity-input::-webkit-outer-spin-button,
-        .quantity-spinner-wrapper .quantity-input::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+/* The popup box for the confirmation */
+.confirm-modal {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 400px; /* A bit smaller for a confirmation box */
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
 
-    .quantity-spinner-wrapper .spinner-buttons {
-        display: flex;
-        flex-direction: column; /* Stack buttons vertically */
-        height: 100%; /* Make buttons fill the wrapper height */
-        border-left: 1px solid #ccc; /* Separator line between input and buttons */
+.modal-overlay.active .confirm-modal {
+    transform: scale(1);
+}
+
+/* The warning icon */
+.confirm-modal .modal-icon {
+    font-size: 3.5rem;
+    color: #f0ad4e; /* A warning orange color */
+    margin-bottom: 1rem;
+}
+
+/* The text content */
+.confirm-modal .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.confirm-modal .modal-message {
+    color: #6c757d;
+    margin-bottom: 2rem;
+}
+
+/* The action buttons */
+.confirm-modal .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+    .confirm-modal .modal-actions .btn {
+        padding: 0.6rem 1.5rem;
+        font-weight: 600;
+        border-radius: 6px;
+        border: 2px solid transparent;
+        transition: all 0.2s ease;
     }
 
-    .quantity-spinner-wrapper .spinner-button {
-        background-color: transparent; /* No background for buttons */
-        border: none; /* Remove button borders */
-        color: #555; /* Icon color */
-        cursor: pointer;
-        padding: 0 8px; /* Adjust padding for button area */
-        font-size: 0.7rem; /* Smaller icon size */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 50%; /* Each button takes half the height */
-        transition: background-color 0.2s ease;
+/* "Yes, Clear" button styling */
+.confirm-modal .btn-confirm-delete {
+    background-color: var(--primary-red, #DB4444);
+    border-color: var(--primary-red, #DB4444);
+    color: #fff;
+}
+
+    .confirm-modal .btn-confirm-delete:hover {
+        background-color: var(--primary-red-dark, #c53030);
+        border-color: var(--primary-red-dark, #c53030);
     }
 
-        .quantity-spinner-wrapper .spinner-button:hover {
-            background-color: #f0f0f0; /* Slight hover effect */
-        }
+/* "Cancel" button styling */
+.confirm-modal .btn-cancel {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #495057;
+}
 
-        .quantity-spinner-wrapper .spinner-button:active {
-            background-color: #e0e0e0; /* Active click effect */
-        }
-
-        .quantity-spinner-wrapper .spinner-button i {
-            pointer-events: none; /* Prevent icon clicks from interfering with button click */
-        }
+    .confirm-modal .btn-cancel:hover {
+        background-color: #e2e6ea;
+        border-color: #dae0e5;
+    }

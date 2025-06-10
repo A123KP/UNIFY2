@@ -330,3 +330,28 @@ a.cart-container { /* The <a> tag */
     font-size: 1.3rem; /* Original size */
     margin-left: 15px; /* Original margin */
 }
+
+.cart-container {
+    position: relative;
+    display: inline-block;
+}
+
+#cart-item-count-display::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: -8px;
+    background-color: #dc3545;
+    color: white; /* Changed to white for better contrast on red */
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1;
+    border: 2px solid white;
+    display: none;
+}
+
+#cart-item-count-display[data-count]:not([data-count="0"]):not([data-count=""])::after {
+    display: inline-block;
+}

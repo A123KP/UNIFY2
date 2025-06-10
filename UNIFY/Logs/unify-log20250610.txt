@@ -1,0 +1,12 @@
+2025-06-10 10:29:17.055 +05:30 [INF] User profile is available. Using 'C:\Users\2406662\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-10 10:29:17.698 +05:30 [INF] Now listening on: http://localhost:5210
+2025-06-10 10:29:17.833 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-10 10:29:17.836 +05:30 [INF] Hosting environment: Development
+2025-06-10 10:29:17.840 +05:30 [INF] Content root path: C:\UNIFY\UNIFY
+2025-06-10 10:29:19.887 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5210/ - null null
+2025-06-10 10:29:20.601 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-06-10 10:29:20.681 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5210/ - 404 0 null 833.9306ms
+2025-06-10 10:29:20.697 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5210/, Response status code: 404
+2025-06-10 11:34:59.979 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5210/Order/MyOrder - null null
+2025-06-10 11:35:00.008 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5210/Order/MyOrder - 404 0 null 33.6216ms
+2025-06-10 11:35:00.024 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5210/Order/MyOrder, Response status code: 404

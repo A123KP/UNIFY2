@@ -17,15 +17,15 @@ namespace UNIFY.Controllers
     {
         private readonly ICartService _cartService;
         private readonly IProductService _productService;
-        //private readonly IOrderService _orderService;
+        private readonly IOrderService _orderService;
         private readonly IUserService _userService;
         private readonly ILogger<CartController> _logger;
-        //put this inside cartController  IOrderService orderService
-        public CartController(ICartService cartService, IProductService productService, IUserService userService, ILogger<CartController> logger)
+
+        public CartController(ICartService cartService, IProductService productService, IOrderService orderService, IUserService userService, ILogger<CartController> logger)
         {
             _cartService = cartService;
             _productService = productService;
-            //_orderService = orderService;
+            _orderService = orderService;
             _userService = userService;
             _logger = logger;
         }
@@ -86,8 +86,8 @@ namespace UNIFY.Controllers
 
                 _logger.LogInformation($"ProcessCheckout: Cart saved successfully for UserId: {currentUserId}.");
 
-                //var orderId = await _orderService.CreateOrderAsync(currentUserId);
-                //_logger.LogInformation($"ProcessCheckout: Order created successfully with OrderId: {orderId}.");
+                var orderId = await _orderService.CreateOrderAsync(currentUserId);
+                _logger.LogInformation($"ProcessCheckout: Order created successfully with OrderId: {orderId}.");
 
                 string redirectUrl = Url.Action("Payment", "Payment"); // Ensure PaymentController and Payment action exist
                 _logger.LogInformation($"ProcessCheckout: Redirecting to {redirectUrl}");

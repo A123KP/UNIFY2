@@ -1,0 +1,30 @@
+﻿@model List<UNIFY.Models.OrderItem>
+
+@if (Model == null || !Model.Any())
+{
+    <p class="text-center text-muted">No items found for this order.</p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price(₹)</th>
+                <th>Subtotal(₹)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Product?.Name</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Price</td>
+                    <td>@(item.Quantity * item.Price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

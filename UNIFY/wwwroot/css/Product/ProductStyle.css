@@ -30,7 +30,7 @@
 }
 
 .btn-outline-info.btn-hover-fill:hover {
-    background-color: #0dcaf0; /* info blue */
+    background-color: black; /* info blue */
     color: white;
 }
 
@@ -54,4 +54,68 @@
 .btn-custom-red:focus,
 .btn-custom-red.focus {
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.5); /* Matching focus outline */
+}
+
+.table {
+    border: 1px solid grey; /* This adds the border to the table itself */
+    border-collapse: collapse; /* Essential for making the table border work well */
+}
+
+.table th,
+.table td {
+    /* Optional: You might want to remove inner borders from cells */
+    border: none;
+    padding: 8px; /* Add some padding for readability */
+}
+
+    /* wwwroot/css/productstyle.css */
+
+    /* ... (Your existing CSS) ... */
+
+    /* New styles for limiting description to 2 lines and improving alignment */
+    /* Styles for the table cells in general */
+    .table td {
+        vertical-align: top; /* Ensure all cell content aligns to the top */
+        padding: 8px; /* Consistent padding for all cells */
+    }
+
+        /* Styles for the description cell container (the <td>) */
+        .table td.description-cell {
+            /* Define the column width here. This is crucial for content inside. */
+            width: 300px; /* Adjust this value as needed for your layout */
+            max-width: 300px;
+            box-sizing: border-box; /* Include padding in the width calculation */
+            /* No need for overflow, text-overflow, display, line-clamp on the td itself anymore */
+        }
+
+/* Styles for the actual description text container (the new <div>) */
+.description-content {
+    /* Essential for truncation */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allow text to wrap naturally */
+    /* Webkit-specific for multi-line truncation */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    /* Ensure consistent line-height for correct truncation calculation */
+    line-height: 1.5;
+    height: 3em;
+    min-height: 3em;
+}
+
+
+/* ... (Rest of your existing CSS) ... */
+
+.bottom-border-cell {
+    border-bottom: 1px solid grey; /* Adjust thickness, style, and color as needed */
+    /* Ensure other borders are not overriding it if you've set them elsewhere */
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+.table.table-hover.table-striped tbody tr:hover {
+    background-color: #cdcdcd; /* A very light blue (AliceBlue) */
+    /* You can use any color value: hex, RGB, named color, etc. */
 }

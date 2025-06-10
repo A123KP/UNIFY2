@@ -1,0 +1,88 @@
+﻿@model List<UNIFY.Models.Product>
+
+@{
+    ViewData["Title"] = "Search Results";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/css/home/styles.css" rel="stylesheet" />
+<link href="~/css/Search/search.css" rel="stylesheet" />
+
+
+<div class="container mt-4">
+    <h2 class="mb-4">Search Results for "@ViewData["SearchTerm"]"</h2>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-3">
+
+            @foreach (var product in Model)
+            {
+                <div class="col">
+                    <div class="card h-100 shadow-sm product-card-search">
+                        @{
+                            string imagePath = $"/images/ProductCatalog/Product{product.ProductId}.jpg";
+                            string fallbackImagePath = "/images/placeholder.png";
+                        }
+                        <a asp-controller="Home" asp-action="Details" asp-route-id="@product.ProductId" class="text-decoration-none">
+                            <img src="@imagePath" class="card-img-top product-image" alt="@product.Name"
+                                 onerror="this.onerror=null;this.src='@fallbackImagePath';">
+                        </a>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title text-truncate product-name">
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@product.ProductId" class="text-dark text-decoration-none">@product.Name</a>
+                            </h5>
+                            <p class="card-text text-muted small product-description-clamp flex-grow-1">@product.Description</p>
+                            <p class="card-text mb-1">
+                                @if (product.Category != null)
+                                {
+                                    <small class="text-muted product-category">Category: @product.Category.Name</small>
+                                }
+                                else
+                                {
+                                    <small class="text-muted product-category">Category: N/A</small>
+                                }
+                            </p>
+                            <p class="card-text fw-bold product-price mb-2">Price: ₹@product.Price.ToString("N2")</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 pt-0">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@product.ProductId" class="btn btn-outline-dark btn-sm w-100 mb-2">View Details</a>
+                            <button type="button" class="btn btn-danger btn-sm w-100 search-add-to-cart-btn"
+                                    data-product-id="@product.ProductId"
+                                    data-product-name="@product.Name"
+                                    data-product-price="@product.Price"
+                                    data-product-image="@imagePath">
+                                Add to Cart <i class="bi bi-cart-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <p class="alert alert-info">No products found matching your search criteria.</p>
+    }
+    <div class="mt-4 text-center">
+        <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">Back to Home</a>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // Add to Cart click handler for the search results page
+            $('.search-add-to-cart-btn').on('click', function () {
+                const $button = $(this);
+                const productId = $button.data('product-id');
+                const productName = $button.data('product-name');
+                const productPrice = $button.data('product-price');
+                const productImage = $button.data('product-image');
+
+                // This calls the GLOBAL function from _Layout.cshtml, which works correctly
+                addProductToCartShared(productId, productName, productPrice, productImage);
+            });
+        });
+    </script>
+}

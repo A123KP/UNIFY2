@@ -18,6 +18,8 @@ builder.Host.UseSerilog(); // Use Serilog for logging
 
 // Add services to the container.
 builder.Services.AddScoped<IUserService, UserService>(); // Existing
+builder.Services.AddScoped<IProductService, ProductService>(); // Add this
+builder.Services.AddScoped<IHomeService, HomeService>();
 
 builder.Services.AddHttpContextAccessor();
 

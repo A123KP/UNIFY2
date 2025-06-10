@@ -56,22 +56,22 @@ header {
     position: relative;
     z-index: 2;
     background: rgba(0, 0, 0, 0.45);*/ /* Semi-transparent black background */
-    /*padding: 1.5rem 2rem;
+/*padding: 1.5rem 2rem;
     border-radius: 8px;
     max-width: 80%;
 }*/
 
-    .hero-content h1 {
-        font-size: 3rem;
-        font-weight: bold;
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-        margin-bottom: 0.5rem;
-    }
+.hero-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 0.5rem;
+}
 
-    .hero-content p {
-        font-size: 1.25rem;
-        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
-    }
+.hero-content p {
+    font-size: 1.25rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
 
 /* Keyframes to control the sliding animation */
 @keyframes slideAnimation {
@@ -254,17 +254,6 @@ header {
     transition: margin-bottom 0.3s ease; /* Keep transition for price if content shifts */
 }
 
-    .product-price .original-price {
-        text-decoration: line-through;
-        color: #999;
-        font-size: 0.8em;
-        margin-right: 5px;
-    }
-
-    .product-price .discounted-price {
-        color: #dc3545;
-        font-weight: bold;
-    }
 
 /* --- ADD TO CART/VIEW DETAILS BUTTON HOVER STYLES --- */
 .add-to-cart-hover {
@@ -461,5 +450,78 @@ header {
 
     .category-item p {
         font-size: 0.75rem;
+    }
+}
+/*
+=====================================================
+    NEW STYLES FOR INDEX PAGE SECTIONS
+=====================================================
+*/
+html {
+    scroll-behavior: smooth;
+}
+/* --- General Section Styling (for Hover Effect) --- */
+.page-section {
+    /* These properties create the hover effect on the containers */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04); /* A very light initial shadow */
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth transition */
+    margin-top: 2rem; /* Ensure consistent spacing */
+    margin-bottom: 2rem;
+    border-top: 1px solid #e9ecef;
+}
+
+    .page-section:hover {
+        transform: translateY(-8px); /* Lifts the section up on hover */
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08); /* A more pronounced shadow */
+    }
+
+/* Give the sections a target offset for the fixed navbar */
+#about-section .about-logo-image {
+    /* Sets a maximum size, but allows it to be smaller if needed */
+    width: 100%;
+    max-width: 300px;
+    /* Use modern CSS to enforce a 1:1 square aspect ratio */
+    aspect-ratio: 1 / 1;
+    /* Keep the other styles */
+    object-fit: cover;
+    border: 5px solid #fff;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* Updated responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+    #about-section .about-logo-image {
+        max-width: 220px; /* Make it a bit smaller on mobile */
+        margin-top: 2rem;
+    }
+}
+
+
+/* --- Contact Section Specifics --- */
+#contact-section .form-control {
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+}
+
+    #contact-section .form-control:focus {
+        border-color: #dc3545;
+        box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+    }
+
+#contact-section .btn {
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    #about-section .about-logo-image {
+        width: 250px;
+        height: 250px;
+        margin-top: 2rem;
     }
 }

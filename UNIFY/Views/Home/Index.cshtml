@@ -1,0 +1,318 @@
+﻿@using UNIFY.Models
+@{
+    ViewData["Title"] = "Welcome to UNIFY";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var flashSaleProducts = ViewBag.FlashSaleProducts as List<Product>;
+    var exploreProducts = ViewBag.ExploreProducts as List<Product>;
+    var categories = ViewBag.Categories as List<Category>;
+}
+<link href="~/css/home/styles.css" rel="stylesheet" />
+
+<header class="hero-section-container">
+    <div class="hero-slider-track">
+        <div class="hero-slide">
+            <img src="~/images/ProductCatalog/bannerimage1.jpg" alt="Summer Sale Banner" />
+            <div class="hero-content">
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="~/images/productcatalog/bannerimage2.jpg" alt="New Arrivals Banner" />
+            <div class="hero-content">
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="~/images/productcatalog/bannerimage3.jpg" alt="Flash Deals Banner" />
+            <div class="hero-content">
+            </div>
+        </div>
+        <div class="hero-slide">
+            <img src="~/images/productcatalog/bannerimage.jpg" alt="Free Shipping Banner" />
+            <div class="hero-content">
+            </div>
+        </div>
+    </div>
+</header>
+<main class="container my-4">
+    <section class="flash-sales-section mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title">Flash Sales</h2>
+            <div class="sale-badge-container">
+                <span class="sale-badge-text">SALE</span>
+            </div>
+        </div>
+        <div class="product-slider-wrapper">
+            <button class="slider-arrow prev-arrow" aria-label="Previous Products"><i class="bi bi-chevron-left"></i></button>
+            <div class="product-grid-horizontal">
+                @if (flashSaleProducts != null && flashSaleProducts.Any())
+                {
+                    @foreach (var product in flashSaleProducts)
+                    {
+                        <div class="product-card">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@product.ProductId" class="text-decoration-none text-dark d-block">
+                                @{
+                                    string imagePath = $"/images/ProductCatalog/Product{product.ProductId}.jpg";
+                                    string fallbackImagePath = "/images/placeholder.png";
+                                }
+                                <img src="@imagePath" alt="@product.Name" class="product-image" onerror="this.onerror=null;this.src='@fallbackImagePath';">
+                                <div class="product-info">
+                                    <p class="card-text small product-description-clamp flex-grow-1"><strong>@product.Name</strong></p>
+                                    <p class="card-text small product-description-clamp flex-grow-1">@product.Description</p>
+                                    <p class="product-price">₹@product.Price.ToString("N2")</p>
+                                    <button type="button" class="add-to-cart-hover index-add-to-cart-btn"
+                                            data-product-id="@product.ProductId"
+                                            data-product-name="@product.Name"
+                                            data-product-price="@product.Price"
+                                            data-product-image="@imagePath">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No flash sale products available yet.</p>
+                }
+            </div>
+            <button class="slider-arrow next-arrow" aria-label="Next Products"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="shop-categories-section mb-5">
+        <h2 class="section-title text-center mb-4">Shop Our Top Categories</h2>
+        <div class="row g-3 justify-content-center">
+            @if (categories != null && categories.Any())
+            {
+                @foreach (var category in categories)
+                {
+                    <div class="col-6 col-md-4 col-lg-2">
+                        <a asp-controller="Home" asp-action="ByCategory" asp-route-categoryId="@category.CategoryId" class="text-decoration-none d-block h-100">
+
+                            <div class="category-item">
+                                @if (category.Name == "Phones")
+                                {
+                                    <i class="bi bi-phone fs-2 mb-2"></i>
+                                }
+                                else if (category.Name == "Laptops")
+                                {
+                                    <i class="bi bi-laptop fs-2 mb-2"></i>
+                                }
+                                else if (category.Name == "Cameras")
+                                {
+                                    <i class="bi bi-camera fs-2 mb-2"></i>
+                                }
+                                else if (category.Name == "SmartWatches")
+                                {
+                                    <i class="bi bi-watch fs-2 mb-2"></i>
+                                }
+                                else if (category.Name == "TVs")
+                                {
+                                    <i class="bi bi-tv fs-2 mb-2"></i>
+                                }
+                                else if (category.Name == "Gaming")
+                                {
+                                    <i class="bi bi-controller fs-2 mb-2"></i>
+                                }
+                                else
+                                {
+                                    <i class="bi bi-collection fs-2 mb-2"></i>
+                                }
+                                <p>@category.Name</p>
+                            </div>
+
+                        </a>
+                    </div>
+                }
+            }
+            else
+            {
+                <p class="text-center">No categories found.</p>
+            }
+        </div>
+    </section>
+
+    <section class="explore-products-section mb-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2 class="section-title">Explore Our Products</h2>
+            <a asp-controller="Home" asp-action="AllProducts" class="text-decoration-none text-dark">View All &rarr;</a>
+        </div>
+
+
+        <div class="product-slider-wrapper">
+            <button class="slider-arrow prev-arrow" aria-label="Previous Products"><i class="bi bi-chevron-left"></i></button>
+            <div class="product-grid-horizontal">
+                @if (exploreProducts != null && exploreProducts.Any())
+                {
+                    @foreach (var product in exploreProducts)
+                    {
+                        <div class="product-card">
+                            <a asp-controller="Home" asp-action="Details" asp-route-id="@product.ProductId" class="text-decoration-none text-dark d-block">
+                                @{
+                                    string imagePath = $"/images/ProductCatalog/Product{product.ProductId}.jpg";
+                                    string fallbackImagePath = "/images/placeholder.png";
+                                }
+                                <img src="@imagePath" alt="@product.Name" class="product-image" onerror="this.onerror=null;this.src='@fallbackImagePath';">
+                                <div class="product-info">
+                                    <p class="card-text small product-description-clamp flex-grow-1"><strong>@product.Name</strong></p>
+                                    <p class="card-text small product-description-clamp flex-grow-1">@product.Description</p>
+                                    <p class="product-price">₹@product.Price.ToString("N2")</p>
+                                    <button type="button" class="add-to-cart-hover index-add-to-cart-btn"
+                                            data-product-id="@product.ProductId"
+                                            data-product-name="@product.Name"
+                                            data-product-price="@product.Price"
+                                            data-product-image="@imagePath">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <p>No products to explore yet.</p>
+                }
+            </div>
+            <button class="slider-arrow next-arrow" aria-label="Next Products"><i class="bi bi-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <section class="features-section py-4">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <i class="bi bi-truck fs-1 mb-2" style="color: black"></i>
+                    <h3 class="h5">FREE AND FAST DELIVERY</h3>
+                    <p class="small">On all orders over ₹2000</p>
+                </div>
+                <div class="col-md-4 mb-3 mb-md-0">
+                    <i class="bi bi-headset fs-1 mb-2" style="color: black;"></i>
+                    <h3 class="h5">24/7 CUSTOMER SERVICE</h3>
+                    <p class="small">Friendly 24/7 customer support</p>
+                </div>
+                <div class="col-md-4">
+                    <i class="bi bi-shield-check fs-1 mb-2" style="color: black;"></i>
+                    <h3 class="h5">MONEY BACK GUARANTEE</h3>
+                    <p class="small">We return money within 24 Hours</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* ABOUT SECTION *@
+
+    <section id="about-section" class="py-5 my-5 page-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <h2 class="section-title mb-3">About UNIFY</h2>
+                    <p class="text-muted">Welcome to UNIFY, your one-stop destination for the latest and greatest in electronics. Founded on the principle of simplifying technology, we bring you a curated selection of top-quality gadgets, from smartphones and laptops to gaming consoles.</p>
+                    <p class="text-muted">Our commitment is to provide authentic products, competitive prices, and a seamless shopping experience. At UNIFY, we don't just sell electronics; we deliver innovation and joy to your doorstep.</p>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="~/images/LOGO.png" class="img-fluid rounded-circle about-logo-image" alt="About UNIFY">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @* CONTACT US *@
+
+    <section id="contact-section" class="py-5 page-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="lead text-muted">Have a question or need support? Drop us a line!</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="contactName" class="form-label">Your Name</label>
+                                    <input type="text" class="form-control" id="contactName" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="contactEmail" class="form-label">Your Email</label>
+                                    <input type="email" class="form-control" id="contactEmail" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="contactMessage" class="form-label">Your Message</label>
+                            <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-danger btn-lg px-5">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            // --- Logic for the product sliders on THIS page ---
+            $('.product-slider-wrapper').each(function () {
+                var sliderWrapper = $(this);
+                var productGrid = sliderWrapper.find('.product-grid-horizontal');
+                var prevArrow = sliderWrapper.find('.prev-arrow');
+                var nextArrow = sliderWrapper.find('.next-arrow');
+
+                function getScrollAmount() {
+                    var firstCard = productGrid.find('.product-card:first');
+                    if (firstCard.length) {
+                        var cardWidth = firstCard.outerWidth();
+                        var cardMarginRight = parseFloat(firstCard.css('margin-right')) || 0;
+                        var assumedGap = 16;
+                        return cardWidth + Math.max(cardMarginRight, assumedGap);
+                    }
+                    return 300;
+                }
+
+                prevArrow.on('click', function () {
+                    productGrid.animate({ scrollLeft: '-=' + getScrollAmount() }, 100);
+                });
+
+                nextArrow.on('click', function () {
+                    productGrid.animate({ scrollLeft: '+=' + getScrollAmount() }, 100);
+                });
+
+                function updateArrowVisibility() {
+                    var scrollLeft = productGrid.scrollLeft();
+                    var scrollWidth = productGrid.get(0).scrollWidth;
+                    var clientWidth = productGrid.innerWidth();
+                    prevArrow.css('visibility', scrollLeft <= 0 ? 'hidden' : 'visible');
+                    nextArrow.css('visibility', scrollLeft + clientWidth >= scrollWidth - 5 ? 'hidden' : 'visible');
+                }
+
+                productGrid.on('scroll', updateArrowVisibility);
+                updateArrowVisibility();
+                $(window).on('resize', updateArrowVisibility);
+            });
+
+            // --- Add to Cart button clicks on THIS page ---
+            $('.product-grid-horizontal').on('click', '.index-add-to-cart-btn', function (event) {
+                event.preventDefault();
+                event.stopPropagation();
+
+                const $button = $(this);
+                const productId = $button.data('product-id');
+                const productName = $button.data('product-name');
+                const productPrice = $button.data('product-price');
+                const productImage = $button.data('product-image');
+
+                // Calls the GLOBAL function from _Layout.cshtml
+                addProductToCartShared(productId, productName, productPrice, productImage);
+            });
+        });
+    </script>
+}

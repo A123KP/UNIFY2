@@ -137,7 +137,7 @@
                                     }
 
                                     <li>
-                                        <a asp-controller="UPM" asp-action="Logout" class="dropdown-item">
+                                        <a asp-controller="UPM" asp-action="Logout" class="dropdown-item" id="logoutButton">
                                             <i class="bi bi-box-arrow-right"></i>
                                             <span>Logout</span>
                                         </a>
@@ -255,6 +255,12 @@
                 if (event.key === CART_KEY_SHARED) {
                     updateCartCountInHeaderShared();
                 }
+            });
+
+            // LOGIC ADDED HERE
+            $('#logoutButton').on('click', function() {
+                console.log('Logout button clicked. Clearing client-side cart.');
+                localStorage.removeItem(CART_KEY_SHARED);
             });
         });
     </script>

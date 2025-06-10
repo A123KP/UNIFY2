@@ -146,20 +146,33 @@
             showClearCartConfirmModal();
         }
 
+        // This is the NEW function to replace it with
         function updateItemQuantity(productId, change) {
             let cart = getClientCart();
             const itemIndex = cart.findIndex(p => p.productId === productId);
+
             if (itemIndex > -1) {
-                let newQuantity = cart[itemIndex].quantity + change;
-                if (newQuantity > MAX_QUANTITY_PER_ITEM) {
-                    alert(`You can only order a maximum of ${MAX_QUANTITY_PER_ITEM} units for this item.`);
-                    newQuantity = MAX_QUANTITY_PER_ITEM;
+                // First, check if the user is trying to ADD more when they are already AT the max limit.
+                if (change > 0 && cart[itemIndex].quantity >= MAX_QUANTITY_PER_ITEM) {
+                    // Show the custom info modal instead of an alert.
+                    showInfoModal(
+                        "Quantity Limit Reached",
+                        `You can only add a maximum of ${MAX_QUANTITY_PER_ITEM} units for this item.`
+                    );
+                    return; // Exit the function immediately.
                 }
+
+                let newQuantity = cart[itemIndex].quantity + change;
+
                 if (newQuantity <= 0) {
+                    // If quantity is zero or less, remove the item from the cart.
                     cart.splice(itemIndex, 1);
                 } else {
+                    // Otherwise, update the quantity.
                     cart[itemIndex].quantity = newQuantity;
                 }
+
+                // Save the changes and redraw the cart.
                 setClientCart(cart);
             }
         }
@@ -230,9 +243,9 @@
                 if (cartItems.length === 0) {
                     // If it is, show the info popup and stop.
                     showInfoModal("Cart is Empty", "Please add items to your cart before proceeding to checkout.");
-                    return; 
+                    return;
                 }
-                
+
                 // If the cart is NOT empty, continue with the checkout process.
                 const checkoutData = cartItems.map(item => ({ productId: item.productId, quantity: item.quantity }));
                 $.ajax({

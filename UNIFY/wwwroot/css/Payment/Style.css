@@ -12,33 +12,40 @@ h2, h4 {
 }
 
 /* Breadcrumb Styles */
-.breadcrumb {
-    background-color: #ffffff; /* Light gray for breadcrumbs */
-    padding: 0.75rem 1.25rem;
+:root {
+    --primary-red: #DB4444;
+    --text-dark: #212529;
+    --text-light: #6c757d;
 }
 
-A
-
-.breadcrumb-item a {
-    color: #706a6a; /* Standard bootstrap link color */
-    text-decoration: none;
-    transition: color 0.2s ease-in-out;
+/* --- Breadcrumb Styling --- */
+.breadcrumb-container {
+    max-width: 1140px;
+    margin: 0 auto 2rem auto;
+    font-size: 0.9rem;
+    color: var(--text-light);
 }
 
-.breadcrumb-item a:hover {
-    color: #212529; /* Darker blue on hover */
-}
+    .breadcrumb-container a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
 
-.breadcrumb-item.active {
-    color: #212529; /* Standard gray for active breadcrumb item */
-}
+        .breadcrumb-container a:hover {
+            color: var(--primary-red);
+        }
+
+    .breadcrumb-container span:last-child {
+        color: var(--text-dark);
+        font-weight: 600;
+    }
 
 /* Payment Navigation (Left Side) */
 .payment-nav .nav-link {
     color: #706a6a; /* Darker text for nav links */
     background-color: #ffffff; /* White background for nav items */
-    border: 1px solid #495057;
-    /*border: 1px solid #dee2e6 !important;  Lighter border */
+    border: 1px solid #dee2e6; /* Lighter border */
     margin-bottom: 0.5rem;
     border-radius: 0.3rem;
     transition: all 0.3s ease-in-out;
@@ -66,7 +73,7 @@ A
 /* Tab Content Panes (Right Side) */
 .tab-content > .tab-pane {
     background-color: #ffffff; /* White background for content area */
-    border: 1px solid #495057; /* Lighter border i changed  */
+    border: 1px solid #dee2e6; /* Lighter border */
     padding: 1.75rem;
     border-radius: 0.35rem;
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
@@ -147,8 +154,8 @@ A
 
     .btn-outline-secondary:hover {
         color: #fff; /* White text on hover */
-        background-color: #dc3545; /* Darker gray background on hover */
-        border-color: #bd2130; /* Matching border color */
+        background-color: #6c757d; /* Darker gray background on hover */
+        border-color: #6c757d; /* Matching border color */
         transform: translateY(-2px) scale(1.02);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Adjusted shadow for light theme */
     }
@@ -166,7 +173,6 @@ A
         box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
     }
 
-
 /* COD Specific Text */
 #v-pills-cod p {
     color: #495057; /* Darker text color for COD instructions */
@@ -177,3 +183,110 @@ A
 .me-3 {
     margin-right: 1rem !important;
 }
+
+/* --- START: ADDED FOR INTERACTIVITY AND FUN --- */
+
+/* Animated Page Title */
+h2.text-center {
+    animation: fadeInDown 0.8s ease-out;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Interactive Icons in Nav Pills */
+.payment-nav .nav-link .fas {
+    transition: transform 0.3s ease-in-out;
+}
+
+.payment-nav .nav-link:hover .fas {
+    transform: scale(1.2) rotate(-10deg);
+}
+
+.payment-nav .nav-link.active .fas {
+    transform: scale(1.1);
+    color: #fff;
+}
+
+/* Card Icon Styling */
+#card-icon-container {
+    background-color: #f8f9fa;
+    border-left: none;
+}
+
+    #card-icon-container .fab {
+        font-size: 1.5rem;
+        transition: opacity 0.4s ease-in-out;
+    }
+
+/* Focused input field with slight movement */
+.form-control:focus {
+    transform: scale(1.01);
+}
+
+/* Notification Bar Styling */
+.notification-container {
+    position: relative;
+    z-index: 1050;
+    margin-bottom: 1rem;
+}
+
+.notification {
+    padding: 1rem 1.5rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: slideIn 0.5s ease-out;
+}
+
+.notification-success {
+    background-color: #28a745;
+}
+
+.notification-danger {
+    background-color: #dc3545;
+}
+
+.notification-info {
+    background-color: #dc3545;
+}
+
+.notification .close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 1;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+    .notification .close-btn:hover {
+        opacity: 1;
+    }
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* --- END: ADDED FOR INTERACTIVITY AND FUN --- */

@@ -4444,3 +4444,601 @@ INNER JOIN [Users] AS [u] ON [o].[UserId] = [u].[UserId]
 2025-06-10 18:55:01.805 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/favicon.ico - null null
 2025-06-10 18:55:01.830 +05:30 [INF] The file /favicon.ico was not modified
 2025-06-10 18:55:01.840 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/favicon.ico - 304 null image/x-icon 34.8975ms
+2025-06-10 21:57:49.088 +05:30 [INF] User profile is available. Using 'C:\Users\2406725\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-10 21:57:49.647 +05:30 [INF] Now listening on: https://localhost:7104
+2025-06-10 21:57:49.650 +05:30 [INF] Now listening on: http://localhost:5210
+2025-06-10 21:57:49.733 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-10 21:57:49.735 +05:30 [INF] Hosting environment: Development
+2025-06-10 21:57:49.738 +05:30 [INF] Content root path: C:\UNIFY\UNIFY2\UNIFY
+2025-06-10 21:57:50.790 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-10 21:57:51.072 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-10 21:57:51.137 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller UNIFY.Controllers.HomeController (UNIFY).
+2025-06-10 21:57:52.231 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-10 21:57:52.800 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-10 21:57:54.415 +05:30 [INF] Executed DbCommand (192ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p0].[ProductId], [p0].[CategoryId], [p0].[Description], [p0].[Name], [p0].[Price], [p0].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM (
+    SELECT TOP(@__p_0) [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+    FROM [Products] AS [p]
+) AS [p0]
+INNER JOIN [Categories] AS [c] ON [p0].[CategoryId] = [c].[CategoryId]
+2025-06-10 21:57:54.598 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[CategoryId]
+2025-06-10 21:57:54.620 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name]
+FROM [Categories] AS [c]
+ORDER BY [c].[Name]
+2025-06-10 21:57:54.704 +05:30 [INF] Executing ViewResult, running view Index.
+2025-06-10 21:57:55.008 +05:30 [INF] Executed ViewResult - view Index executed in 307.5854ms.
+2025-06-10 21:57:55.018 +05:30 [INF] Executed action UNIFY.Controllers.HomeController.Index (UNIFY) in 3875.6526ms
+2025-06-10 21:57:55.022 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-10 21:57:55.042 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 4263.0628ms
+2025-06-10 21:57:55.047 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-06-10 21:57:55.052 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:57:55.048 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - null null
+2025-06-10 21:57:55.051 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - null null
+2025-06-10 21:57:55.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - null null
+2025-06-10 21:57:55.076 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - null null
+2025-06-10 21:57:55.070 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/home/styles.css - null null
+2025-06-10 21:57:55.074 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - null null
+2025-06-10 21:57:55.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:57:55.096 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - null null
+2025-06-10 21:57:55.157 +05:30 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\site.css'
+2025-06-10 21:57:55.157 +05:30 [INF] Sending file. Request path: '/UNIFY.styles.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\obj\Debug\net8.0\scopedcss\bundle\UNIFY.styles.css'
+2025-06-10 21:57:55.171 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - 200 1444 text/css 120.8418ms
+2025-06-10 21:57:55.174 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 200 1123 text/css 122.0686ms
+2025-06-10 21:57:55.153 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product9.jpg - null null
+2025-06-10 21:57:55.181 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-10 21:57:55.185 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/LOGO.png - null null
+2025-06-10 21:57:55.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - null null
+2025-06-10 21:57:55.171 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - null null
+2025-06-10 21:57:55.166 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - null null
+2025-06-10 21:57:55.189 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:57:55.179 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-10 21:57:55.172 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product13.jpg - null null
+2025-06-10 21:57:55.204 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - 404 0 null 38.2298ms
+2025-06-10 21:57:55.221 +05:30 [INF] Sending file. Request path: '/css/Layout/layout.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\Layout\layout.css'
+2025-06-10 21:57:55.242 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product10.jpg, Response status code: 404
+2025-06-10 21:57:55.245 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 159.1664ms
+2025-06-10 21:57:55.244 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - 200 12259 text/css 195.8171ms
+2025-06-10 21:57:55.260 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/Product13.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\Product13.jpg'
+2025-06-10 21:57:55.265 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage3.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage3.jpg'
+2025-06-10 21:57:55.270 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product13.jpg - 200 7223 image/jpeg 97.3913ms
+2025-06-10 21:57:55.274 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - 200 53238 image/jpeg 187.4545ms
+2025-06-10 21:57:55.284 +05:30 [INF] Sending file. Request path: '/images/LOGO.png'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\LOGO.png'
+2025-06-10 21:57:55.283 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2025-06-10 21:57:55.294 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/LOGO.png - 200 95077 image/png 108.9286ms
+2025-06-10 21:57:55.299 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2025-06-10 21:57:55.299 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 200 78474 text/javascript 117.922ms
+2025-06-10 21:57:55.308 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - 200 162726 text/css 260.7391ms
+2025-06-10 21:57:55.305 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/bannerimage1.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage1.jpg'
+2025-06-10 21:57:55.204 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - 404 0 null 33.2221ms
+2025-06-10 21:57:55.328 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - 200 161275 image/jpeg 253.231ms
+2025-06-10 21:57:55.330 +05:30 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\lib\jquery\dist\jquery.min.js'
+2025-06-10 21:57:55.347 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 158.2481ms
+2025-06-10 21:57:55.351 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 200 89503 text/javascript 172.2382ms
+2025-06-10 21:57:55.338 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product12.jpg, Response status code: 404
+2025-06-10 21:57:55.208 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - 404 0 null 41.7639ms
+2025-06-10 21:57:55.253 +05:30 [INF] Sending file. Request path: '/css/home/styles.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\Home\styles.css'
+2025-06-10 21:57:55.379 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product8.jpg, Response status code: 404
+2025-06-10 21:57:55.383 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/home/styles.css - 200 14496 text/css 313.9752ms
+2025-06-10 21:57:55.324 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/Product9.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\Product9.jpg'
+2025-06-10 21:57:55.300 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\BannerImage.jpg'
+2025-06-10 21:57:55.397 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - null null
+2025-06-10 21:57:55.397 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - null null
+2025-06-10 21:57:55.415 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-10 21:57:55.417 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - 404 0 null 20.8322ms
+2025-06-10 21:57:55.424 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 9.339ms
+2025-06-10 21:57:55.429 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product8.jpg, Response status code: 404
+2025-06-10 21:57:55.435 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-10 21:57:55.419 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - 404 0 null 22.4803ms
+2025-06-10 21:57:55.397 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product9.jpg - 200 243224 image/jpeg 243.7926ms
+2025-06-10 21:57:55.449 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product10.jpg, Response status code: 404
+2025-06-10 21:57:55.402 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - 200 142137 image/jpeg 305.2388ms
+2025-06-10 21:57:55.187 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - null null
+2025-06-10 21:57:55.109 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product3.jpg - null null
+2025-06-10 21:57:55.466 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage2.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage2.jpg'
+2025-06-10 21:57:55.116 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product5.jpg - null null
+2025-06-10 21:57:55.127 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product7.jpg - null null
+2025-06-10 21:57:55.473 +05:30 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\js\site.js'
+2025-06-10 21:57:55.476 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - 200 1822936 image/jpeg 401.5224ms
+2025-06-10 21:57:55.481 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product5.jpg - 404 0 null 364.684ms
+2025-06-10 21:57:55.486 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - 200 345 text/javascript 299.2092ms
+2025-06-10 21:57:55.499 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product5.jpg, Response status code: 404
+2025-06-10 21:57:55.485 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product7.jpg - 404 0 null 357.2068ms
+2025-06-10 21:57:55.516 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product7.jpg, Response status code: 404
+2025-06-10 21:57:55.517 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/Product3.jpg'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\Product3.jpg'
+2025-06-10 21:57:55.538 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-10 21:57:55.541 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product3.jpg - 200 397354 image/jpeg 434.0656ms
+2025-06-10 21:57:55.545 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 6.7972ms
+2025-06-10 21:57:55.553 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-10 21:58:00.070 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Register - null null
+2025-06-10 21:58:00.084 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-10 21:58:00.088 +05:30 [INF] Route matched with {action = "Register", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-10 21:58:00.098 +05:30 [INF] Executing ViewResult, running view Register.
+2025-06-10 21:58:00.125 +05:30 [INF] Executed ViewResult - view Register executed in 27.5451ms.
+2025-06-10 21:58:00.130 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Register (UNIFY) in 37.4879ms
+2025-06-10 21:58:00.133 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-10 21:58:00.137 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Register - 200 null text/html; charset=utf-8 67.7232ms
+2025-06-10 21:58:00.169 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:00.169 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:00.170 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/UPM/bags.png - null null
+2025-06-10 21:58:00.169 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/register.css - null null
+2025-06-10 21:58:00.181 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:00.170 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:00.186 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 17.004ms
+2025-06-10 21:58:00.198 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 28.8945ms
+2025-06-10 21:58:00.232 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 61.8141ms
+2025-06-10 21:58:00.236 +05:30 [INF] Sending file. Request path: '/css/UPM/register.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\UPM\register.css'
+2025-06-10 21:58:00.246 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/register.css - 200 1481 text/css 77.1219ms
+2025-06-10 21:58:00.313 +05:30 [INF] Sending file. Request path: '/images/UPM/bags.png'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\images\UPM\bags.png'
+2025-06-10 21:58:00.316 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/UPM/bags.png - 200 1407064 image/png 145.6893ms
+2025-06-10 21:58:03.001 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Login - null null
+2025-06-10 21:58:03.059 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-10 21:58:03.067 +05:30 [INF] Route matched with {action = "Login", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-10 21:58:03.076 +05:30 [INF] Executing ViewResult, running view Login.
+2025-06-10 21:58:03.088 +05:30 [INF] Executed ViewResult - view Login executed in 12.7861ms.
+2025-06-10 21:58:03.092 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Login (UNIFY) in 19.6723ms
+2025-06-10 21:58:03.095 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-10 21:58:03.097 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Login - 200 null text/html; charset=utf-8 96.734ms
+2025-06-10 21:58:03.121 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:03.121 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/login.css - null null
+2025-06-10 21:58:03.121 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:03.121 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:03.125 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 4.1637ms
+2025-06-10 21:58:03.133 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:03.140 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.891ms
+2025-06-10 21:58:03.142 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 21.7643ms
+2025-06-10 21:58:03.156 +05:30 [INF] Sending file. Request path: '/css/UPM/login.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\UPM\login.css'
+2025-06-10 21:58:03.158 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/login.css - 200 1279 text/css 36.9778ms
+2025-06-10 21:58:05.148 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/UPM/LoginUser - application/x-www-form-urlencoded 232
+2025-06-10 21:58:05.157 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.LoginUser (UNIFY)'
+2025-06-10 21:58:05.176 +05:30 [INF] Route matched with {action = "LoginUser", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult LoginUser(System.String, System.String) on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-10 21:58:05.328 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__identifier_0='?' (Size = 100), @__identifier_0_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[Email], [u].[Password], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__identifier_0 OR [u].[Username] = @__identifier_0_1
+2025-06-10 21:58:05.892 +05:30 [INF] Executing RedirectResult, redirecting to /.
+2025-06-10 21:58:05.898 +05:30 [INF] Executed action UNIFY.Controllers.UPM.LoginUser (UNIFY) in 712.8001ms
+2025-06-10 21:58:05.903 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.LoginUser (UNIFY)'
+2025-06-10 21:58:05.907 +05:30 [INF] Session started; Key:ac3a8544-e9c4-adc3-30ac-bdd590e1fc59, Id:b263486b-29c5-2d50-1ecc-9de3af011842
+2025-06-10 21:58:05.914 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/UPM/LoginUser - 302 0 null 766.312ms
+2025-06-10 21:58:05.923 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-10 21:58:05.933 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-10 21:58:05.935 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller UNIFY.Controllers.HomeController (UNIFY).
+2025-06-10 21:58:06.031 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p0].[ProductId], [p0].[CategoryId], [p0].[Description], [p0].[Name], [p0].[Price], [p0].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM (
+    SELECT TOP(@__p_0) [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+    FROM [Products] AS [p]
+) AS [p0]
+INNER JOIN [Categories] AS [c] ON [p0].[CategoryId] = [c].[CategoryId]
+2025-06-10 21:58:06.042 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[CategoryId]
+2025-06-10 21:58:06.050 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name]
+FROM [Categories] AS [c]
+ORDER BY [c].[Name]
+2025-06-10 21:58:06.055 +05:30 [INF] Executing ViewResult, running view Index.
+2025-06-10 21:58:06.071 +05:30 [INF] Executed ViewResult - view Index executed in 15.8763ms.
+2025-06-10 21:58:06.073 +05:30 [INF] Executed action UNIFY.Controllers.HomeController.Index (UNIFY) in 133.2306ms
+2025-06-10 21:58:06.076 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-10 21:58:06.078 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 155.5894ms
+2025-06-10 21:58:06.123 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product7.jpg - null null
+2025-06-10 21:58:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product5.jpg - null null
+2025-06-10 21:58:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - null null
+2025-06-10 21:58:06.149 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-10 21:58:06.126 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - null null
+2025-06-10 21:58:06.140 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product7.jpg - 404 0 null 15.0099ms
+2025-06-10 21:58:06.146 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product5.jpg - 404 0 null 21.0159ms
+2025-06-10 21:58:06.170 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-10 21:58:06.156 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 7.7015ms
+2025-06-10 21:58:06.162 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - 404 0 null 36.7746ms
+2025-06-10 21:58:06.169 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product7.jpg, Response status code: 404
+2025-06-10 21:58:06.126 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:06.134 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:06.180 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 9.9658ms
+2025-06-10 21:58:06.186 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-10 21:58:06.212 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-10 21:58:06.191 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product12.jpg, Response status code: 404
+2025-06-10 21:58:06.175 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product5.jpg, Response status code: 404
+2025-06-10 21:58:06.199 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 76.5231ms
+2025-06-10 21:58:06.151 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - 404 0 null 26.1858ms
+2025-06-10 21:58:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - null null
+2025-06-10 21:58:06.125 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:06.217 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 90.9652ms
+2025-06-10 21:58:06.259 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 134.4881ms
+2025-06-10 21:58:06.246 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product10.jpg, Response status code: 404
+2025-06-10 21:58:06.252 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product8.jpg - 404 0 null 127.051ms
+2025-06-10 21:58:06.270 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-10 21:58:06.294 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product8.jpg, Response status code: 404
+2025-06-10 21:58:06.300 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 30.0949ms
+2025-06-10 21:58:06.309 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-10 21:58:09.192 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Cart/Cart - null null
+2025-06-10 21:58:09.212 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.CartController.Cart (UNIFY)'
+2025-06-10 21:58:09.221 +05:30 [INF] Route matched with {action = "Cart", controller = "Cart"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Cart() on controller UNIFY.Controllers.CartController (UNIFY).
+2025-06-10 21:58:09.234 +05:30 [INF] Executing ViewResult, running view Cart.
+2025-06-10 21:58:09.257 +05:30 [INF] Executed ViewResult - view Cart executed in 24.4442ms.
+2025-06-10 21:58:09.263 +05:30 [INF] Executed action UNIFY.Controllers.CartController.Cart (UNIFY) in 32.6451ms
+2025-06-10 21:58:09.268 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.CartController.Cart (UNIFY)'
+2025-06-10 21:58:09.271 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Cart/Cart - 200 null text/html; charset=utf-8 78.276ms
+2025-06-10 21:58:09.312 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:09.313 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:09.313 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Cart/Cart.css - null null
+2025-06-10 21:58:09.322 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:09.315 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:09.329 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 15.6918ms
+2025-06-10 21:58:09.336 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 24.3981ms
+2025-06-10 21:58:09.359 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 45.1251ms
+2025-06-10 21:58:09.396 +05:30 [INF] Sending file. Request path: '/css/Cart/Cart.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\Cart\Cart.css'
+2025-06-10 21:58:09.399 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Cart/Cart.css - 200 13287 text/css 86.0049ms
+2025-06-10 21:58:12.370 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/Cart/ProcessCheckout - application/json 88
+2025-06-10 21:58:12.375 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.CartController.ProcessCheckout (UNIFY)'
+2025-06-10 21:58:12.381 +05:30 [INF] Route matched with {action = "ProcessCheckout", controller = "Cart"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ProcessCheckout(System.Collections.Generic.List`1[UNIFY.Models.Cart]) on controller UNIFY.Controllers.CartController (UNIFY).
+2025-06-10 21:58:12.450 +05:30 [INF] ProcessCheckout action started.
+2025-06-10 21:58:12.454 +05:30 [INF] ProcessCheckout: Processing for UserId: 1
+2025-06-10 21:58:12.457 +05:30 [INF] ProcessCheckout: Item to process - ProductId: 5, Quantity: 1, UserId set to: 1
+2025-06-10 21:58:12.460 +05:30 [INF] ProcessCheckout: Item to process - ProductId: 3, Quantity: 4, UserId set to: 1
+2025-06-10 21:58:12.464 +05:30 [INF] ProcessCheckout: Item to process - ProductId: 8, Quantity: 1, UserId set to: 1
+2025-06-10 21:58:12.487 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CartId], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Carts] AS [c]
+WHERE [c].[UserId] = @__userId_0
+2025-06-10 21:58:12.526 +05:30 [INF] ProcessCheckout: Cart saved successfully for UserId: 1.
+2025-06-10 21:58:12.541 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CartId], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Carts] AS [c]
+WHERE [c].[UserId] = @__userId_0
+2025-06-10 21:58:12.631 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__productIds_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [Products] AS [p]
+WHERE [p].[ProductId] IN (
+    SELECT [p0].[value]
+    FROM OPENJSON(@__productIds_0) WITH ([value] int '$') AS [p0]
+)
+2025-06-10 21:58:12.818 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@p0='?' (DbType = DateTime2), @p1='?' (DbType = Int32), @p2='?' (Precision = 10) (Scale = 2) (DbType = Decimal), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Orders] ([OrderDate], [Status], [TotalAmount], [UserId])
+OUTPUT INSERTED.[OrderId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-10 21:58:12.906 +05:30 [INF] Executed DbCommand (27ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p2='?' (DbType = Int32), @p3='?' (DbType = Int32), @p4='?' (DbType = Int32), @p5='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p6='?' (DbType = Int32), @p7='?' (DbType = Int32), @p8='?' (DbType = Int32), @p9='?' (Precision = 18) (Scale = 2) (DbType = Decimal), @p10='?' (DbType = Int32), @p11='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [OrderItems] USING (
+VALUES (@p0, @p1, @p2, @p3, 0),
+(@p4, @p5, @p6, @p7, 1),
+(@p8, @p9, @p10, @p11, 2)) AS i ([OrderId], [Price], [ProductId], [Quantity], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([OrderId], [Price], [ProductId], [Quantity])
+VALUES (i.[OrderId], i.[Price], i.[ProductId], i.[Quantity])
+OUTPUT INSERTED.[OrderItemId], i._Position;
+2025-06-10 21:58:12.923 +05:30 [INF] ProcessCheckout: Order created successfully with OrderId: 37.
+2025-06-10 21:58:12.926 +05:30 [INF] ProcessCheckout: Redirecting to /Payment/Payment
+2025-06-10 21:58:12.930 +05:30 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-10 21:58:12.947 +05:30 [INF] Executed action UNIFY.Controllers.CartController.ProcessCheckout (UNIFY) in 562.9259ms
+2025-06-10 21:58:12.951 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.CartController.ProcessCheckout (UNIFY)'
+2025-06-10 21:58:12.957 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/Cart/ProcessCheckout - 200 null application/json; charset=utf-8 586.4937ms
+2025-06-10 21:58:12.980 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Payment/Payment - null null
+2025-06-10 21:58:12.996 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.PaymentController.Payment (UNIFY)'
+2025-06-10 21:58:13.005 +05:30 [INF] Route matched with {action = "Payment", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Payment() on controller UNIFY.Controllers.PaymentController (UNIFY).
+2025-06-10 21:58:13.038 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:58:13.047 +05:30 [INF] Executing ViewResult, running view Payment.
+2025-06-10 21:58:13.094 +05:30 [INF] Executed ViewResult - view Payment executed in 48.1052ms.
+2025-06-10 21:58:13.099 +05:30 [INF] Executed action UNIFY.Controllers.PaymentController.Payment (UNIFY) in 88.0274ms
+2025-06-10 21:58:13.101 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.PaymentController.Payment (UNIFY)'
+2025-06-10 21:58:13.103 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Payment/Payment - 200 null text/html; charset=utf-8 123.3743ms
+2025-06-10 21:58:13.148 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:13.148 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:13.149 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:13.159 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:13.164 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 17.2156ms
+2025-06-10 21:58:13.173 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 25.4262ms
+2025-06-10 21:58:13.149 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Payment/Style.css?v=dZeblCSqafQyXxSSBBFWFa0zYw8AyddD-nVFmKW6yKs - null null
+2025-06-10 21:58:13.195 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 46.6616ms
+2025-06-10 21:58:13.208 +05:30 [INF] The file /css/Payment/Style.css was not modified
+2025-06-10 21:58:13.214 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Payment/Style.css?v=dZeblCSqafQyXxSSBBFWFa0zYw8AyddD-nVFmKW6yKs - 304 null text/css 65.8736ms
+2025-06-10 21:58:32.505 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - application/json 24
+2025-06-10 21:58:32.513 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:58:32.520 +05:30 [INF] Route matched with {action = "ProcessPayment", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ProcessPayment(UNIFY.Models.PaymentRequest) on controller UNIFY.Controllers.PaymentController (UNIFY).
+2025-06-10 21:58:32.542 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:58:32.578 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@p0='?' (Precision = 10) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Payments] ([Amount], [OrderId], [PaymentDate], [PaymentStatus])
+OUTPUT INSERTED.[PaymentId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-10 21:58:32.585 +05:30 [INF] Payment recorded for OrderId: 37
+2025-06-10 21:58:32.608 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Orders] SET [Status] = @p0
+OUTPUT 1
+WHERE [OrderId] = @p1;
+2025-06-10 21:58:32.629 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CartId], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Carts] AS [c]
+WHERE [c].[UserId] = @__userId_0
+2025-06-10 21:58:32.670 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+DELETE FROM [Carts]
+OUTPUT 1
+WHERE [CartId] = @p0;
+DELETE FROM [Carts]
+OUTPUT 1
+WHERE [CartId] = @p1;
+DELETE FROM [Carts]
+OUTPUT 1
+WHERE [CartId] = @p2;
+2025-06-10 21:58:32.696 +05:30 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-10 21:58:32.701 +05:30 [INF] Executed action UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY) in 175.0851ms
+2025-06-10 21:58:32.706 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:58:32.710 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - 200 null application/json; charset=utf-8 204.9415ms
+2025-06-10 21:58:33.791 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/Latest - null null
+2025-06-10 21:58:33.801 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:58:33.811 +05:30 [INF] Route matched with {action = "Latest", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Latest() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-10 21:58:33.837 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:58:33.863 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__order_OrderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__order_OrderId_0
+2025-06-10 21:58:33.873 +05:30 [INF] Executing ViewResult, running view CustomerOrder.
+2025-06-10 21:58:33.896 +05:30 [INF] Executed ViewResult - view CustomerOrder executed in 22.4388ms.
+2025-06-10 21:58:33.900 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.Latest (UNIFY) in 83.0526ms
+2025-06-10 21:58:33.902 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:58:33.906 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/Latest - 200 null text/html; charset=utf-8 118.627ms
+2025-06-10 21:58:33.977 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:33.979 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Orderprocessing/Customer.css - null null
+2025-06-10 21:58:33.978 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:33.982 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:33.988 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:34.003 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 24.3661ms
+2025-06-10 21:58:34.011 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 34.6472ms
+2025-06-10 21:58:34.032 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 49.1982ms
+2025-06-10 21:58:34.059 +05:30 [INF] Sending file. Request path: '/css/Orderprocessing/Customer.css'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\css\Orderprocessing\Customer.css'
+2025-06-10 21:58:34.062 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Orderprocessing/Customer.css - 200 8113 text/css 83.0356ms
+2025-06-10 21:58:38.141 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:38.147 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 6.6365ms
+2025-06-10 21:58:46.483 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - application/json 23
+2025-06-10 21:58:46.491 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:58:46.493 +05:30 [INF] Route matched with {action = "ProcessPayment", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ProcessPayment(UNIFY.Models.PaymentRequest) on controller UNIFY.Controllers.PaymentController (UNIFY).
+2025-06-10 21:58:46.505 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:58:46.513 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (Precision = 10) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Payments] ([Amount], [OrderId], [PaymentDate], [PaymentStatus])
+OUTPUT INSERTED.[PaymentId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-10 21:58:46.522 +05:30 [INF] Payment recorded for OrderId: 37
+2025-06-10 21:58:46.530 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CartId], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Carts] AS [c]
+WHERE [c].[UserId] = @__userId_0
+2025-06-10 21:58:46.538 +05:30 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-10 21:58:46.542 +05:30 [INF] Executed action UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY) in 45.9823ms
+2025-06-10 21:58:46.545 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:58:46.547 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - 200 null application/json; charset=utf-8 64.2453ms
+2025-06-10 21:58:47.577 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/Latest - null null
+2025-06-10 21:58:47.594 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:58:47.599 +05:30 [INF] Route matched with {action = "Latest", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Latest() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-10 21:58:47.612 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:58:47.626 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__order_OrderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__order_OrderId_0
+2025-06-10 21:58:47.631 +05:30 [INF] Executing ViewResult, running view CustomerOrder.
+2025-06-10 21:58:47.636 +05:30 [INF] Executed ViewResult - view CustomerOrder executed in 5.1729ms.
+2025-06-10 21:58:47.638 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.Latest (UNIFY) in 32.3862ms
+2025-06-10 21:58:47.640 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:58:47.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/Latest - 200 null text/html; charset=utf-8 65.3333ms
+2025-06-10 21:58:47.693 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-06-10 21:58:47.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:58:47.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-10 21:58:47.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-10 21:58:47.718 +05:30 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-06-10 21:58:47.730 +05:30 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-06-10 21:58:47.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:58:47.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - null null
+2025-06-10 21:58:47.732 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 304 null text/javascript 36.1668ms
+2025-06-10 21:58:47.734 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 38.0031ms
+2025-06-10 21:58:47.699 +05:30 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2025-06-10 21:58:47.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:58:47.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - null null
+2025-06-10 21:58:47.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - null null
+2025-06-10 21:58:47.731 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 34.7061ms
+2025-06-10 21:58:47.739 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 42.7842ms
+2025-06-10 21:58:47.744 +05:30 [INF] The file /css/site.css was not modified
+2025-06-10 21:58:47.757 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - 304 null text/css 64.0555ms
+2025-06-10 21:58:47.762 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:58:47.767 +05:30 [INF] The file /js/site.js was not modified
+2025-06-10 21:58:47.772 +05:30 [INF] The file /css/Layout/layout.css was not modified
+2025-06-10 21:58:47.786 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - 304 null text/css 90.9401ms
+2025-06-10 21:58:47.796 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 100.7467ms
+2025-06-10 21:58:47.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - 304 null text/javascript 102.4858ms
+2025-06-10 21:58:47.801 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - 304 null text/css 106.2729ms
+2025-06-10 21:59:10.579 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/Latest - null null
+2025-06-10 21:59:10.593 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:10.595 +05:30 [INF] Route matched with {action = "Latest", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Latest() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-10 21:59:10.612 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:59:10.630 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__order_OrderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__order_OrderId_0
+2025-06-10 21:59:10.642 +05:30 [INF] Executing ViewResult, running view CustomerOrder.
+2025-06-10 21:59:10.647 +05:30 [INF] Executed ViewResult - view CustomerOrder executed in 5.5996ms.
+2025-06-10 21:59:10.650 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.Latest (UNIFY) in 49.4882ms
+2025-06-10 21:59:10.653 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:10.656 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/Latest - 200 null text/html; charset=utf-8 76.951ms
+2025-06-10 21:59:10.695 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:59:10.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:59:10.696 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:59:10.701 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:59:10.719 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 23.2144ms
+2025-06-10 21:59:10.722 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 27.0316ms
+2025-06-10 21:59:10.734 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 38.8231ms
+2025-06-10 21:59:10.777 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/favicon.ico - null null
+2025-06-10 21:59:10.807 +05:30 [INF] Sending file. Request path: '/favicon.ico'. Physical path: 'C:\UNIFY\UNIFY2\UNIFY\wwwroot\favicon.ico'
+2025-06-10 21:59:10.810 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/favicon.ico - 200 5430 image/x-icon 33.7059ms
+2025-06-10 21:59:28.439 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:59:28.448 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 9.6472ms
+2025-06-10 21:59:31.587 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - application/json 23
+2025-06-10 21:59:31.595 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:59:31.598 +05:30 [INF] Route matched with {action = "ProcessPayment", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ProcessPayment(UNIFY.Models.PaymentRequest) on controller UNIFY.Controllers.PaymentController (UNIFY).
+2025-06-10 21:59:31.613 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:59:31.628 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Precision = 10) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Payments] ([Amount], [OrderId], [PaymentDate], [PaymentStatus])
+OUTPUT INSERTED.[PaymentId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-10 21:59:31.637 +05:30 [INF] Payment recorded for OrderId: 37
+2025-06-10 21:59:31.645 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Orders] SET [Status] = @p0
+OUTPUT 1
+WHERE [OrderId] = @p1;
+2025-06-10 21:59:31.660 +05:30 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-10 21:59:31.670 +05:30 [INF] Executed action UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY) in 65.2929ms
+2025-06-10 21:59:31.677 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:59:31.685 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - 200 null application/json; charset=utf-8 97.9135ms
+2025-06-10 21:59:32.716 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/Latest - null null
+2025-06-10 21:59:32.727 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:32.731 +05:30 [INF] Route matched with {action = "Latest", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Latest() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-10 21:59:32.746 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:59:32.762 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__order_OrderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__order_OrderId_0
+2025-06-10 21:59:32.771 +05:30 [INF] Executing ViewResult, running view CustomerOrder.
+2025-06-10 21:59:32.776 +05:30 [INF] Executed ViewResult - view CustomerOrder executed in 5.336ms.
+2025-06-10 21:59:32.787 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.Latest (UNIFY) in 48.0488ms
+2025-06-10 21:59:32.790 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:32.793 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/Latest - 200 null text/html; charset=utf-8 78.0727ms
+2025-06-10 21:59:32.834 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:59:32.835 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Orderprocessing/Customer.css - null null
+2025-06-10 21:59:32.846 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 11.4374ms
+2025-06-10 21:59:32.835 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:59:32.836 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:59:32.861 +05:30 [INF] The file /css/Orderprocessing/Customer.css was not modified
+2025-06-10 21:59:32.875 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:59:32.881 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Orderprocessing/Customer.css - 304 null text/css 45.535ms
+2025-06-10 21:59:32.884 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 49.1189ms
+2025-06-10 21:59:32.895 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 59.4233ms
+2025-06-10 21:59:44.676 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:59:44.688 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 12.0836ms
+2025-06-10 21:59:46.764 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - application/json 29
+2025-06-10 21:59:46.771 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:59:46.774 +05:30 [INF] Route matched with {action = "ProcessPayment", controller = "Payment"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] ProcessPayment(UNIFY.Models.PaymentRequest) on controller UNIFY.Controllers.PaymentController (UNIFY).
+2025-06-10 21:59:46.784 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:59:46.794 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (Precision = 10) (Scale = 2) (DbType = Decimal), @p1='?' (DbType = Int32), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+INSERT INTO [Payments] ([Amount], [OrderId], [PaymentDate], [PaymentStatus])
+OUTPUT INSERTED.[PaymentId]
+VALUES (@p0, @p1, @p2, @p3);
+2025-06-10 21:59:46.799 +05:30 [INF] Payment recorded for OrderId: 37
+2025-06-10 21:59:46.805 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+UPDATE [Orders] SET [Status] = @p0
+OUTPUT 1
+WHERE [OrderId] = @p1;
+2025-06-10 21:59:46.814 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CartId], [c].[ProductId], [c].[Quantity], [c].[UserId]
+FROM [Carts] AS [c]
+WHERE [c].[UserId] = @__userId_0
+2025-06-10 21:59:46.818 +05:30 [INF] Executing JsonResult, writing value of type '<>f__AnonymousType1`3[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-06-10 21:59:46.820 +05:30 [INF] Executed action UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY) in 43.0594ms
+2025-06-10 21:59:46.822 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.PaymentController.ProcessPayment (UNIFY)'
+2025-06-10 21:59:46.824 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/Payment/ProcessPayment - 200 null application/json; charset=utf-8 60.7841ms
+2025-06-10 21:59:47.861 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/Latest - null null
+2025-06-10 21:59:47.869 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:47.872 +05:30 [INF] Route matched with {action = "Latest", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Latest() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-10 21:59:47.885 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId]
+FROM [Orders] AS [o]
+WHERE [o].[UserId] = @__userId_0
+ORDER BY [o].[OrderDate] DESC
+2025-06-10 21:59:47.897 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__order_OrderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__order_OrderId_0
+2025-06-10 21:59:47.904 +05:30 [INF] Executing ViewResult, running view CustomerOrder.
+2025-06-10 21:59:47.910 +05:30 [INF] Executed ViewResult - view CustomerOrder executed in 5.768ms.
+2025-06-10 21:59:47.913 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.Latest (UNIFY) in 35.0027ms
+2025-06-10 21:59:47.917 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.Latest (UNIFY)'
+2025-06-10 21:59:47.918 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/Latest - 200 null text/html; charset=utf-8 58.1655ms
+2025-06-10 21:59:47.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-06-10 21:59:47.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - null null
+2025-06-10 21:59:47.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-10 21:59:47.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-10 21:59:47.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 21:59:47.959 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - null null
+2025-06-10 21:59:47.996 +05:30 [INF] The file /css/Layout/layout.css was not modified
+2025-06-10 21:59:48.000 +05:30 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-06-10 21:59:48.023 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - 304 null text/css 63.5165ms
+2025-06-10 21:59:48.032 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 71.1056ms
+2025-06-10 21:59:48.004 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-10 21:59:48.022 +05:30 [INF] The file /css/site.css was not modified
+2025-06-10 21:59:47.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-10 21:59:47.975 +05:30 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2025-06-10 21:59:47.980 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - null null
+2025-06-10 21:59:47.984 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-10 21:59:48.009 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 50.0721ms
+2025-06-10 21:59:48.046 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 86.9464ms
+2025-06-10 21:59:48.049 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - 304 null text/css 90.1812ms
+2025-06-10 21:59:48.055 +05:30 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-06-10 21:59:48.056 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - 304 null text/css 98.0339ms
+2025-06-10 21:59:48.061 +05:30 [INF] The file /js/site.js was not modified
+2025-06-10 21:59:48.079 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 95.7521ms
+2025-06-10 21:59:48.092 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 304 null text/javascript 131.0681ms
+2025-06-10 21:59:48.099 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - 304 null text/javascript 118.9765ms
+2025-06-10 22:00:03.977 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-10 22:00:03.992 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 15.225ms

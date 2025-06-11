@@ -74,6 +74,13 @@
                 alert('Password must be at least 6 characters long.');
                 return false;
             }
+            
+        // Password complexity
+           
+            if (!passwordRegex.test(password)) {
+                alert('Password must include uppercase, lowercase, number, and special character.');
+                return false;
+            }
 
             
             // No spaces in password
@@ -82,6 +89,14 @@
                 return false;
             }
 
+            // No spaces in username
+            if (/\s/.test(name)) {
+                alert('Username cannot contain spaces.');
+                return false;
+            }
+
+
+            
             if (!name || !email || !password || !confirmPassword) {
                 alert('All fields are required.');
                 return false;

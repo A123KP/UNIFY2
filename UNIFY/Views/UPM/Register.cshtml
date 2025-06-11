@@ -74,7 +74,15 @@
                 alert('Password must be at least 6 characters long.');
                 return false;
             }
-            if (!name || !email || !password) {
+
+            
+            // No spaces in password
+            if (/\s/.test(password)) {
+                alert('Password cannot contain spaces.');
+                return false;
+            }
+
+            if (!name || !email || !password || !confirmPassword) {
                 alert('All fields are required.');
                 return false;
             }

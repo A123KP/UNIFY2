@@ -41,7 +41,8 @@ header {
     color: white;
 }
 
-    .hero-slide img {
+    .hero-slide img,
+    .hero-slide video { /* <--- ADDED THIS */
         position: absolute;
         top: 0;
         left: 0;
@@ -206,7 +207,9 @@ header {
 }
 
     .product-card:hover {
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        transform: translateY(-6px);
+        /* Makes the shadow more pronounced to enhance the lift effect */
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
 
 .product-image {

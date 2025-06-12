@@ -4,10 +4,8 @@
     ViewData["Title"] = "Admin Orders";
 }
 
-
 @section Styles {
 @* <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet"> *@
-
     <link href="~/css/Orderprocessing/orderprocessing.css" rel="stylesheet" />
     <link href="~/css/Orderprocessing/OrderTable.css" rel="stylesheet" />
 }
@@ -18,9 +16,7 @@
     <div class="col-md-4 text-center">
         <h2 class="mb-0">Admin Orders</h2>
     </div>
-
 </div>
-
 
 <div class="card">
     <div class="card-body">
@@ -39,13 +35,14 @@
                 <tbody id="ordersTable">
                     @foreach (var order in Model)
                     {
+                        var isCancelled = order.Status == OrderStatus.CANCELLED;
                         <tr>
                             <td>@order.OrderId</td>
                             <td>@order.User?.Username</td>
                             <td>@order.TotalAmount?.ToString("C", new System.Globalization.CultureInfo("en-IN"))</td>
                             <td>@order.OrderDate?.ToString("yyyy-MM-dd")</td>
                             <td>
-                                <select class="form-control status-dropdown" data-order-id="@order.OrderId">
+                                <select class="form-control status-dropdown" data-order-id="@order.OrderId" @(isCancelled ? "disabled" : "")>
                                     <option value="PENDING" selected="@(order.Status == OrderStatus.PENDING)">PENDING</option>
                                     <option value="SHIPPED" selected="@(order.Status == OrderStatus.SHIPPED)">SHIPPED</option>
                                     <option value="CANCELLED" selected="@(order.Status == OrderStatus.CANCELLED)">CANCELLED</option>
@@ -56,10 +53,10 @@
                                 <button class="btn btn-info btn-sm view-details" data-bs-toggle="modal" data-bs-target="#detailsModal" data-order-id="@order.OrderId">
                                     <i class="bi bi-eye-fill"></i>
                                 </button>
-                                <button class="btn btn-success btn-sm save-status" data-order-id="@order.OrderId">
+                                <button class="btn btn-success btn-sm save-status" data-order-id="@order.OrderId" @(isCancelled ? "disabled" : "")>
                                     <i class="bi bi-floppy-fill"></i>
                                 </button>
-                                <button class="btn btn-danger btn-sm remove-order" data-order-id="@order.OrderId">
+                                <button class="btn btn-danger btn-sm remove-order" data-order-id="@order.OrderId" @(isCancelled ? "disabled" : "")>
                                     <i class="bi bi-trash-fill"></i>
                                 </button>
                             </td>
@@ -70,6 +67,8 @@
         </div>
     </div>
 </div>
+
+@* The rest of your HTML for the Modal and Toast remains the same *@
 
 <div class="modal fade" id="detailsModal" tabindex="-1" aria-labelledby="detailsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -92,7 +91,6 @@
     </div>
 </div>
 
-
 <div class="toast-container position-fixed bottom-0 end-0 p-3" style="z-index: 9999;">
     <div id="statusToast" class="toast align-items-center text-white bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="d-flex">
@@ -102,12 +100,13 @@
     </div>
 </div>
 
-
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> *@
 
     <script>
+        // Your existing JavaScript for showing toast, viewing details, saving status, and removing orders can remain the same.
+        // The disabled attribute on the buttons will prevent the click events from firing for cancelled orders.
         function showToast(message, type) {
             const toastEl = $('#statusToast');
             const toastBody = $('#toastMessage');
@@ -118,55 +117,49 @@
             toast.show();
         }
 
+        // View order details
+        $('.view-details').click(function () {
+            const orderId = $(this).data('order-id');
+            const modalBody = $('#orderDetailsContent');
+            const spinner = `<div class="text-center p-4"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>`;
+            modalBody.html(spinner);
 
-
-
-
-            // View order details - This will load content into the updated modal
-            $('.view-details').click(function () {
-                const orderId = $(this).data('order-id');
-
-                // Show the spinner before making the AJAX call
-                const modalBody = $('#orderDetailsContent');
-                const spinner = `<div class="text-center p-4"><div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div></div>`;
-                modalBody.html(spinner);
-
-                $.get('@Url.Action("GetOrderDetails", "Order")', { orderId: orderId }, function (data) {
-                    modalBody.html(data);
-                }).fail(function() {
-                    modalBody.html('<p class="text-danger text-center">Failed to load order details. Please try again.</p>');
-                });
+            $.get('@Url.Action("GetOrderDetails", "Order")', { orderId: orderId }, function (data) {
+                modalBody.html(data);
+            }).fail(function () {
+                modalBody.html('<p class="text-danger text-center">Failed to load order details. Please try again.</p>');
             });
+        });
 
-            // Save status functionality
-            $('.save-status').click(function () {
-                const orderId = $(this).data('order-id');
-                const newStatus = $(`select[data-order-id='${orderId}']`).val();
+        // Save status functionality
+        $('.save-status').click(function () {
+            const orderId = $(this).data('order-id');
+            const newStatus = $(`select[data-order-id='${orderId}']`).val();
 
-                if (!confirm(`Are you sure you want to update Order #${orderId} to "${newStatus}"?`)) {
-                    return;
-                }
+            if (!confirm(`Are you sure you want to update Order #${orderId} to "${newStatus}"?`)) {
+                return;
+            }
 
-                $.ajax({
-                    url: '@Url.Action("UpdateStatus", "Order")',
-                    type: 'POST',
-                    data: { orderId, status: newStatus },
-                    success: function (response) {
-                        if (response.success) {
-                            showToast("Status updated successfully!", "success");
-                            setTimeout(() => location.reload(), 1500);
-                        } else {
-                            showToast(response.message || "Failed to update status.", "danger");
-                        }
-                    },
-                    error: function () {
-                        showToast("Error occurred while updating status.", "danger");
+            $.ajax({
+                url: '@Url.Action("UpdateStatus", "Order")',
+                type: 'POST',
+                data: { orderId, status: newStatus },
+                success: function (response) {
+                    if (response.success) {
+                        showToast("Status updated successfully!", "success");
+                        setTimeout(() => location.reload(), 1500);
+                    } else {
+                        showToast(response.message || "Failed to update status.", "danger");
                     }
-                });
+                },
+                error: function () {
+                    showToast("Error occurred while updating status.", "danger");
+                }
             });
+        });
 
-            // Remove order functionality
-                    $('#ordersTable').on('click', '.remove-order', function () {
+        // Remove order functionality
+        $('#ordersTable').on('click', '.remove-order', function () {
             const orderId = $(this).data('order-id');
 
             if (!confirm(`Are you sure you want to permanently remove Order #${orderId}?`)) {
@@ -190,10 +183,7 @@
                 }
             });
         });
-
     </script>
-    <!-- DataTables CSS & JS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-
 }

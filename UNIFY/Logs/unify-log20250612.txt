@@ -1,0 +1,707 @@
+2025-06-12 10:06:02.740 +05:30 [INF] User profile is available. Using 'C:\Users\2406663\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-12 10:06:04.367 +05:30 [ERR] Hosting failed to start
+System.IO.IOException: Failed to bind to address http://127.0.0.1:5210: address already in use.
+ ---> Microsoft.AspNetCore.Connections.AddressInUseException: Only one usage of each socket address (protocol/network address/port) is normally permitted.
+ ---> System.Net.Sockets.SocketException (10048): Only one usage of each socket address (protocol/network address/port) is normally permitted.
+   at System.Net.Sockets.Socket.UpdateStatusAfterSocketErrorAndThrowException(SocketError error, Boolean disconnectOnFailure, String callerName)
+   at System.Net.Sockets.Socket.DoBind(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Bind(EndPoint localEP)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportOptions.CreateDefaultBoundListenSocket(EndPoint endpoint)
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketConnectionListener.Bind()
+   at Microsoft.AspNetCore.Server.Kestrel.Transport.Sockets.SocketTransportFactory.BindAsync(EndPoint endpoint, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.Infrastructure.TransportManager.BindAsync(EndPoint endPoint, ConnectionDelegate connectionDelegate, EndpointConfig endpointConfig, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.<>c__DisplayClass28_0`1.<<StartAsync>g__OnBind|0>d.MoveNext()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindEndpointAsync(ListenOptions endpoint, AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.LocalhostListenOptions.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.AddressesStrategy.BindAsync(AddressBindContext context, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.Internal.AddressBinder.BindAsync(ListenOptions[] listenOptions, AddressBindContext context, Func`2 useHttps, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.BindAsync(CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Server.Kestrel.Core.KestrelServerImpl.StartAsync[TContext](IHttpApplication`1 application, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Hosting.GenericWebHostService.StartAsync(CancellationToken cancellationToken)
+   at Microsoft.Extensions.Hosting.Internal.Host.<StartAsync>b__15_1(IHostedService service, CancellationToken token)
+   at Microsoft.Extensions.Hosting.Internal.Host.ForeachService[T](IEnumerable`1 services, CancellationToken token, Boolean concurrent, Boolean abortOnFirstException, List`1 exceptions, Func`3 operation)
+2025-06-12 10:07:35.570 +05:30 [INF] User profile is available. Using 'C:\Users\2406663\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-12 10:07:36.483 +05:30 [INF] Now listening on: https://localhost:7104
+2025-06-12 10:07:36.487 +05:30 [INF] Now listening on: http://localhost:5210
+2025-06-12 10:07:36.590 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 10:07:36.596 +05:30 [INF] Hosting environment: Development
+2025-06-12 10:07:36.600 +05:30 [INF] Content root path: C:\New\UNIFY2\UNIFY
+2025-06-12 10:07:58.110 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-12 10:07:58.560 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-12 10:07:58.633 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller UNIFY.Controllers.HomeController (UNIFY).
+2025-06-12 10:08:00.250 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-12 10:08:01.062 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-12 10:08:17.735 +05:30 [ERR] An error occurred using the connection to database 'UNIFY' on server 'DESKTOP-CO2B9LJ\SQLEXPRESS'.
+2025-06-12 10:08:17.792 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'UNIFY.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:17.978 +05:30 [ERR] Error getting flash sale products for home view.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.WaitForPendingOpen()
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at UNIFY.Services.HomeService.GetFlashSaleProductsAsync() in C:\New\UNIFY2\UNIFY\Services\HomeService.cs:line 25
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:18.172 +05:30 [ERR] An error occurred using the connection to database 'UNIFY' on server 'DESKTOP-CO2B9LJ\SQLEXPRESS'.
+2025-06-12 10:08:18.188 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'UNIFY.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:18.360 +05:30 [ERR] Error getting explore products for home view.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at UNIFY.Services.HomeService.GetExploreProductsAsync() in C:\New\UNIFY2\UNIFY\Services\HomeService.cs:line 41
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:18.435 +05:30 [ERR] An error occurred using the connection to database 'UNIFY' on server 'DESKTOP-CO2B9LJ\SQLEXPRESS'.
+2025-06-12 10:08:18.451 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'UNIFY.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:18.600 +05:30 [ERR] Error getting all categories for home view.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.InternalOpenAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternalAsync(Boolean errorsExpected, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenAsync(CancellationToken cancellationToken, Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReaderAsync(RelationalCommandParameterObject parameterObject, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.InitializeReaderAsync(AsyncEnumerator enumerator, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.ExecuteAsync[TState,TResult](TState state, Func`4 operation, Func`4 verifySucceeded, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.AsyncEnumerator.MoveNextAsync()
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ToListAsync[TSource](IQueryable`1 source, CancellationToken cancellationToken)
+   at UNIFY.Services.HomeService.GetAllCategoriesAsync() in C:\New\UNIFY2\UNIFY\Services\HomeService.cs:line 70
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:08:18.720 +05:30 [INF] Executing ViewResult, running view Index.
+2025-06-12 10:08:19.113 +05:30 [INF] Executed ViewResult - view Index executed in 390.872ms.
+2025-06-12 10:08:19.142 +05:30 [INF] Executed action UNIFY.Controllers.HomeController.Index (UNIFY) in 20492.1192ms
+2025-06-12 10:08:19.154 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-06-12 10:08:19.154 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - null null
+2025-06-12 10:08:19.154 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:08:19.195 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/home/styles.css - null null
+2025-06-12 10:08:19.158 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-12 10:08:19.164 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-12 10:08:19.320 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - null null
+2025-06-12 10:08:19.324 +05:30 [INF] Sending file. Request path: '/css/site.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\site.css'
+2025-06-12 10:08:19.350 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-12 10:08:19.374 +05:30 [INF] Sending file. Request path: '/js/site.js'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\js\site.js'
+2025-06-12 10:08:19.380 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - 200 1444 text/css 224.3031ms
+2025-06-12 10:08:19.382 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 21286.5531ms
+2025-06-12 10:08:19.358 +05:30 [INF] Sending file. Request path: '/UNIFY.styles.css'. Physical path: 'C:\New\UNIFY2\UNIFY\obj\Debug\net8.0\scopedcss\bundle\UNIFY.styles.css'
+2025-06-12 10:08:19.405 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - 200 345 text/javascript 85.7108ms
+2025-06-12 10:08:19.434 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 280.4846ms
+2025-06-12 10:08:19.397 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:08:19.443 +05:30 [INF] Sending file. Request path: '/css/home/styles.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\Home\styles.css'
+2025-06-12 10:08:19.448 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 200 1123 text/css 284.26ms
+2025-06-12 10:08:19.477 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/css/bootstrap.min.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css'
+2025-06-12 10:08:19.488 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/home/styles.css - 200 14496 text/css 292.804ms
+2025-06-12 10:08:19.507 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - 200 162726 text/css 354.233ms
+2025-06-12 10:08:19.195 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - null null
+2025-06-12 10:08:19.525 +05:30 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js'
+2025-06-12 10:08:19.216 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - null null
+2025-06-12 10:08:19.554 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 200 78474 text/javascript 204.1264ms
+2025-06-12 10:08:19.556 +05:30 [INF] Sending file. Request path: '/css/Layout/layout.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\Layout\layout.css'
+2025-06-12 10:08:19.231 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - null null
+2025-06-12 10:08:19.591 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - 200 12259 text/css 396.6167ms
+2025-06-12 10:08:19.251 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - null null
+2025-06-12 10:08:19.266 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - null null
+2025-06-12 10:08:19.280 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/LOGO.png - null null
+2025-06-12 10:08:19.296 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-12 10:08:19.669 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/bannerimage1.jpg'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage1.jpg'
+2025-06-12 10:08:19.720 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - 200 200492 image/jpeg 504.2294ms
+2025-06-12 10:08:19.742 +05:30 [INF] Sending file. Request path: '/images/LOGO.png'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\LOGO.png'
+2025-06-12 10:08:19.756 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage.jpg'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\BannerImage.jpg'
+2025-06-12 10:08:19.760 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/LOGO.png - 200 95077 image/png 480.4934ms
+2025-06-12 10:08:19.768 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - 200 142137 image/jpeg 516.8822ms
+2025-06-12 10:08:19.763 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 366.0005ms
+2025-06-12 10:08:19.745 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage3.jpg'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage3.jpg'
+2025-06-12 10:08:19.832 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - 200 53238 image/jpeg 566.6615ms
+2025-06-12 10:08:19.963 +05:30 [INF] Sending file. Request path: '/lib/jquery/dist/jquery.min.js'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\lib\jquery\dist\jquery.min.js'
+2025-06-12 10:08:19.972 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 200 89503 text/javascript 676.1284ms
+2025-06-12 10:08:20.045 +05:30 [INF] Sending file. Request path: '/images/productcatalog/bannerimage2.jpg'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\bannerimage2.jpg'
+2025-06-12 10:08:20.052 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - 200 1822936 image/jpeg 821.3502ms
+2025-06-12 10:08:22.637 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Register - null null
+2025-06-12 10:08:22.675 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-12 10:08:22.683 +05:30 [INF] Route matched with {action = "Register", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:08:22.711 +05:30 [INF] Executing ViewResult, running view Register.
+2025-06-12 10:08:22.775 +05:30 [INF] Executed ViewResult - view Register executed in 65.1396ms.
+2025-06-12 10:08:22.795 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Register (UNIFY) in 102.6236ms
+2025-06-12 10:08:22.809 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-12 10:08:22.832 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Register - 200 null text/html; charset=utf-8 196.005ms
+2025-06-12 10:08:22.844 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:08:22.851 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/register.css - null null
+2025-06-12 10:08:22.853 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:08:22.852 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/UPM/bags.png - null null
+2025-06-12 10:08:22.879 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 34.2671ms
+2025-06-12 10:08:22.987 +05:30 [INF] Sending file. Request path: '/css/UPM/register.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\UPM\register.css'
+2025-06-12 10:08:23.018 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 164.8482ms
+2025-06-12 10:08:23.028 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/register.css - 200 1481 text/css 175.7336ms
+2025-06-12 10:08:23.293 +05:30 [INF] Sending file. Request path: '/images/UPM/bags.png'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\UPM\bags.png'
+2025-06-12 10:08:23.301 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/UPM/bags.png - 200 1407064 image/png 448.8163ms
+2025-06-12 10:08:25.569 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Login - null null
+2025-06-12 10:08:25.617 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-12 10:08:25.629 +05:30 [INF] Route matched with {action = "Login", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:08:25.650 +05:30 [INF] Executing ViewResult, running view Login.
+2025-06-12 10:08:25.683 +05:30 [INF] Executed ViewResult - view Login executed in 34.0061ms.
+2025-06-12 10:08:25.701 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Login (UNIFY) in 59.6503ms
+2025-06-12 10:08:25.706 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-12 10:08:25.714 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Login - 200 null text/html; charset=utf-8 148.3642ms
+2025-06-12 10:08:25.743 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:08:25.746 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:08:25.747 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/login.css - null null
+2025-06-12 10:08:25.775 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 33.08ms
+2025-06-12 10:08:25.872 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 129.6517ms
+2025-06-12 10:08:25.905 +05:30 [INF] Sending file. Request path: '/css/UPM/login.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\UPM\login.css'
+2025-06-12 10:08:25.910 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/login.css - 200 1279 text/css 163.2838ms
+2025-06-12 10:08:35.826 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/UPM/LoginUser - application/x-www-form-urlencoded 223
+2025-06-12 10:08:35.852 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.LoginUser (UNIFY)'
+2025-06-12 10:08:35.875 +05:30 [INF] Route matched with {action = "LoginUser", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult LoginUser(System.String, System.String) on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:08:51.079 +05:30 [ERR] An error occurred using the connection to database 'UNIFY' on server 'DESKTOP-CO2B9LJ\SQLEXPRESS'.
+2025-06-12 10:08:51.089 +05:30 [ERR] An exception occurred while iterating over the results of a query for context type 'UNIFY.Data.AppDbContext'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+Microsoft.Data.SqlClient.SqlException (0x80131904): A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: SQL Network Interfaces, error: 26 - Error Locating Server/Instance Specified)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.Connect(ServerInfo serverInfo, SqlInternalConnectionTds connHandler, Boolean ignoreSniOpenTimeout, Int64 timerExpire, SqlConnectionString connectionOptions, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.AttemptOneLogin(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean ignoreSniOpenTimeout, TimeoutTimer timeout, Boolean withFailover)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.LoginNoFailover(ServerInfo serverInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString connectionOptions, SqlCredential credential, TimeoutTimer timeout)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds.OpenLoginEnlist(TimeoutTimer timeout, SqlConnectionString connectionOptions, SqlCredential credential, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance)
+   at Microsoft.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken, DbConnectionPool pool)
+   at Microsoft.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at Microsoft.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at Microsoft.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry, SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open(SqlConnectionOverrides overrides)
+   at Microsoft.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenInternal(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalCommand.ExecuteReader(RelationalCommandParameterObject parameterObject)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.InitializeReader(Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.<>c.<MoveNext>b__21_0(DbContext _, Enumerator enumerator)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.SingleQueryingEnumerable`1.Enumerator.MoveNext()
+ClientConnectionId:00000000-0000-0000-0000-000000000000
+Error Number:-1,State:0,Class:20
+2025-06-12 10:09:59.252 +05:30 [INF] User profile is available. Using 'C:\Users\2406663\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-12 10:10:00.043 +05:30 [INF] Now listening on: https://localhost:7104
+2025-06-12 10:10:00.054 +05:30 [INF] Now listening on: http://localhost:5210
+2025-06-12 10:10:00.345 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 10:10:00.350 +05:30 [INF] Hosting environment: Development
+2025-06-12 10:10:00.357 +05:30 [INF] Content root path: C:\New\UNIFY2\UNIFY
+2025-06-12 10:10:22.843 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-12 10:10:23.452 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-12 10:10:23.622 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller UNIFY.Controllers.HomeController (UNIFY).
+2025-06-12 10:11:59.447 +05:30 [INF] User profile is available. Using 'C:\Users\2406663\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-06-12 10:12:00.444 +05:30 [INF] Now listening on: https://localhost:7104
+2025-06-12 10:12:00.465 +05:30 [INF] Now listening on: http://localhost:5210
+2025-06-12 10:12:00.734 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-06-12 10:12:00.741 +05:30 [INF] Hosting environment: Development
+2025-06-12 10:12:00.744 +05:30 [INF] Content root path: C:\New\UNIFY2\UNIFY
+2025-06-12 10:12:21.512 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/ - null null
+2025-06-12 10:12:21.913 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-12 10:12:21.976 +05:30 [INF] Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Index() on controller UNIFY.Controllers.HomeController (UNIFY).
+2025-06-12 10:12:23.179 +05:30 [WRN] No store type was specified for the decimal property 'Price' on entity type 'OrderItem'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'.
+2025-06-12 10:12:23.710 +05:30 [WRN] The query uses a row limiting operator ('Skip'/'Take') without an 'OrderBy' operator. This may lead to unpredictable results. If the 'Distinct' operator is used after 'OrderBy', then make sure to use the 'OrderBy' operator after 'Distinct' as the ordering would otherwise get erased.
+2025-06-12 10:12:25.398 +05:30 [INF] Executed DbCommand (248ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p0].[ProductId], [p0].[CategoryId], [p0].[Description], [p0].[Name], [p0].[Price], [p0].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM (
+    SELECT TOP(@__p_0) [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+    FROM [Products] AS [p]
+) AS [p0]
+INNER JOIN [Categories] AS [c] ON [p0].[CategoryId] = [c].[CategoryId]
+2025-06-12 10:12:25.557 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM [Products] AS [p]
+INNER JOIN [Categories] AS [c] ON [p].[CategoryId] = [c].[CategoryId]
+2025-06-12 10:12:25.598 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [c].[CategoryId], [c].[Name]
+FROM [Categories] AS [c]
+ORDER BY [c].[Name]
+2025-06-12 10:12:25.665 +05:30 [INF] Executing ViewResult, running view Index.
+2025-06-12 10:12:25.978 +05:30 [INF] Executed ViewResult - view Index executed in 306.4223ms.
+2025-06-12 10:12:26.005 +05:30 [INF] Executed action UNIFY.Controllers.HomeController.Index (UNIFY) in 4016.1784ms
+2025-06-12 10:12:26.028 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.HomeController.Index (UNIFY)'
+2025-06-12 10:12:26.082 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - null null
+2025-06-12 10:12:26.085 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - null null
+2025-06-12 10:12:26.082 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - null null
+2025-06-12 10:12:26.082 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - null null
+2025-06-12 10:12:26.172 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/ - 200 null text/html; charset=utf-8 4666.1774ms
+2025-06-12 10:12:26.085 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/home/styles.css - null null
+2025-06-12 10:12:26.109 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - null null
+2025-06-12 10:12:26.133 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - null null
+2025-06-12 10:12:26.161 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - null null
+2025-06-12 10:12:26.187 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - null null
+2025-06-12 10:12:26.217 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:12:26.233 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - null null
+2025-06-12 10:12:26.246 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product11.jpg - null null
+2025-06-12 10:12:26.248 +05:30 [INF] The file /css/Layout/layout.css was not modified
+2025-06-12 10:12:26.253 +05:30 [INF] The file /UNIFY.styles.css was not modified
+2025-06-12 10:12:26.259 +05:30 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2025-06-12 10:12:26.248 +05:30 [INF] The file /css/site.css was not modified
+2025-06-12 10:12:26.275 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product13.jpg - null null
+2025-06-12 10:12:26.274 +05:30 [INF] The file /css/home/styles.css was not modified
+2025-06-12 10:12:26.279 +05:30 [INF] The file /images/ProductCatalog/bannerimage1.jpg was not modified
+2025-06-12 10:12:26.284 +05:30 [INF] The file /images/productcatalog/bannerimage2.jpg was not modified
+2025-06-12 10:12:26.288 +05:30 [INF] The file /images/productcatalog/bannerimage3.jpg was not modified
+2025-06-12 10:12:26.292 +05:30 [INF] The file /images/productcatalog/bannerimage.jpg was not modified
+2025-06-12 10:12:26.308 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - 404 0 null 75.5681ms
+2025-06-12 10:12:26.314 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 104.0225ms
+2025-06-12 10:12:26.317 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product11.jpg - 404 0 null 71.1563ms
+2025-06-12 10:12:26.319 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Layout/layout.css?v=smG17l1xSVL9bIDaNJQd8SSjJoYFo_cBD6omuyGmA18 - 304 null text/css 234.1107ms
+2025-06-12 10:12:26.320 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UNIFY.styles.css?v=T_4t1ZxPm5sc_MRS26FvpFJtMPR7Qou1wq091tsM7K8 - 304 null text/css 237.8415ms
+2025-06-12 10:12:26.322 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/css/bootstrap.min.css - 304 null text/css 239.942ms
+2025-06-12 10:12:26.326 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/site.css?v=5tSc_hDu1eB3MS08HkX3dbQVzydAEL6tm_SoWJr1lkA - 304 null text/css 244.1962ms
+2025-06-12 10:12:26.335 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/home/styles.css - 304 null text/css 250.2441ms
+2025-06-12 10:12:26.337 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/bannerimage1.jpg - 304 null image/jpeg 228.306ms
+2025-06-12 10:12:26.340 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage2.jpg - 304 null image/jpeg 207.4753ms
+2025-06-12 10:12:26.342 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage3.jpg - 304 null image/jpeg 181.3724ms
+2025-06-12 10:12:26.343 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/productcatalog/bannerimage.jpg - 304 null image/jpeg 156.1088ms
+2025-06-12 10:12:26.373 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - null null
+2025-06-12 10:12:26.359 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product10.jpg, Response status code: 404
+2025-06-12 10:12:26.394 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product11.jpg, Response status code: 404
+2025-06-12 10:12:26.394 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product15.jpg - null null
+2025-06-12 10:12:26.415 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product14.jpg - null null
+2025-06-12 10:12:26.433 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product17.jpg - null null
+2025-06-12 10:12:26.440 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product16.jpg - null null
+2025-06-12 10:12:26.448 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product18.jpg - null null
+2025-06-12 10:12:26.454 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product19.jpg - null null
+2025-06-12 10:12:26.460 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product20.jpg - null null
+2025-06-12 10:12:26.470 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product21.jpg - null null
+2025-06-12 10:12:26.475 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product22.jpg - null null
+2025-06-12 10:12:26.487 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product23.jpg - null null
+2025-06-12 10:12:26.492 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - 404 0 null 118.8379ms
+2025-06-12 10:12:26.504 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product24.jpg - null null
+2025-06-12 10:12:26.513 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product15.jpg - 404 0 null 119.2702ms
+2025-06-12 10:12:26.515 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product25.jpg - null null
+2025-06-12 10:12:26.520 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product14.jpg - 404 0 null 105.2286ms
+2025-06-12 10:12:26.524 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product17.jpg - 404 0 null 91.5678ms
+2025-06-12 10:12:26.530 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product16.jpg - 404 0 null 89.3846ms
+2025-06-12 10:12:26.536 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product18.jpg - 404 0 null 87.6084ms
+2025-06-12 10:12:26.541 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product19.jpg - 404 0 null 86.6604ms
+2025-06-12 10:12:26.545 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product20.jpg - 404 0 null 85.0382ms
+2025-06-12 10:12:26.553 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product21.jpg - 404 0 null 83.0472ms
+2025-06-12 10:12:26.557 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product22.jpg - 404 0 null 82.1815ms
+2025-06-12 10:12:26.560 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product23.jpg - 404 0 null 73.745ms
+2025-06-12 10:12:26.566 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product12.jpg, Response status code: 404
+2025-06-12 10:12:26.570 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product24.jpg - 404 0 null 65.7044ms
+2025-06-12 10:12:26.574 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product15.jpg, Response status code: 404
+2025-06-12 10:12:26.577 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product25.jpg - 404 0 null 62.2909ms
+2025-06-12 10:12:26.582 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product14.jpg, Response status code: 404
+2025-06-12 10:12:26.591 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product17.jpg, Response status code: 404
+2025-06-12 10:12:26.604 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product16.jpg, Response status code: 404
+2025-06-12 10:12:26.611 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product18.jpg, Response status code: 404
+2025-06-12 10:12:26.622 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product19.jpg, Response status code: 404
+2025-06-12 10:12:26.632 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product20.jpg, Response status code: 404
+2025-06-12 10:12:26.640 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product21.jpg, Response status code: 404
+2025-06-12 10:12:26.646 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product22.jpg, Response status code: 404
+2025-06-12 10:12:26.655 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product23.jpg, Response status code: 404
+2025-06-12 10:12:26.659 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product26.jpg - null null
+2025-06-12 10:12:26.673 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product24.jpg, Response status code: 404
+2025-06-12 10:12:26.682 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product27.jpg - null null
+2025-06-12 10:12:26.692 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product25.jpg, Response status code: 404
+2025-06-12 10:12:26.698 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product28.jpg - null null
+2025-06-12 10:12:26.703 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product29.jpg - null null
+2025-06-12 10:12:26.708 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product30.jpg - null null
+2025-06-12 10:12:26.725 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product31.jpg - null null
+2025-06-12 10:12:26.741 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product32.jpg - null null
+2025-06-12 10:12:26.757 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product33.jpg - null null
+2025-06-12 10:12:26.770 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product34.jpg - null null
+2025-06-12 10:12:26.782 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product35.jpg - null null
+2025-06-12 10:12:26.793 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product36.jpg - null null
+2025-06-12 10:12:26.806 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product26.jpg - 404 0 null 147.4078ms
+2025-06-12 10:12:26.821 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product37.jpg - null null
+2025-06-12 10:12:26.841 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product27.jpg - 404 0 null 159.4262ms
+2025-06-12 10:12:26.856 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product38.jpg - null null
+2025-06-12 10:12:26.877 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product28.jpg - 404 0 null 178.9451ms
+2025-06-12 10:12:26.900 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product29.jpg - 404 0 null 196.7169ms
+2025-06-12 10:12:26.914 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product30.jpg - 404 0 null 206.0021ms
+2025-06-12 10:12:26.925 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product31.jpg - 404 0 null 200.2825ms
+2025-06-12 10:12:26.943 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product32.jpg - 404 0 null 202.3511ms
+2025-06-12 10:12:26.964 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product33.jpg - 404 0 null 206.9311ms
+2025-06-12 10:12:26.984 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product34.jpg - 404 0 null 213.7821ms
+2025-06-12 10:12:27.005 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product35.jpg - 404 0 null 222.4166ms
+2025-06-12 10:12:27.024 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product36.jpg - 404 0 null 230.6888ms
+2025-06-12 10:12:27.047 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product26.jpg, Response status code: 404
+2025-06-12 10:12:27.067 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product37.jpg - 404 0 null 246.3166ms
+2025-06-12 10:12:27.092 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product27.jpg, Response status code: 404
+2025-06-12 10:12:27.118 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product38.jpg - 404 0 null 262.6883ms
+2025-06-12 10:12:27.142 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product28.jpg, Response status code: 404
+2025-06-12 10:12:27.169 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product29.jpg, Response status code: 404
+2025-06-12 10:12:27.192 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product30.jpg, Response status code: 404
+2025-06-12 10:12:27.215 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product31.jpg, Response status code: 404
+2025-06-12 10:12:27.241 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product32.jpg, Response status code: 404
+2025-06-12 10:12:27.264 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product33.jpg, Response status code: 404
+2025-06-12 10:12:27.419 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - null null
+2025-06-12 10:12:27.425 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/LOGO.png - null null
+2025-06-12 10:12:27.435 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - null null
+2025-06-12 10:12:27.439 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:12:27.399 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - null null
+2025-06-12 10:12:27.292 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product34.jpg, Response status code: 404
+2025-06-12 10:12:27.466 +05:30 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2025-06-12 10:12:27.476 +05:30 [INF] The file /images/LOGO.png was not modified
+2025-06-12 10:12:27.489 +05:30 [INF] The file /js/site.js was not modified
+2025-06-12 10:12:27.524 +05:30 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2025-06-12 10:12:27.454 +05:30 [INF] Sending file. Request path: '/images/ProductCatalog/Product13.jpg'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\images\ProductCatalog\Product13.jpg'
+2025-06-12 10:12:27.323 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product35.jpg, Response status code: 404
+2025-06-12 10:12:27.556 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/bootstrap/dist/js/bootstrap.bundle.min.js - 304 null text/javascript 136.9787ms
+2025-06-12 10:12:27.562 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/LOGO.png - 304 null image/png 136.8044ms
+2025-06-12 10:12:27.569 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/js/site.js?v=939DZuZ-zLBQzY5uDN9BEm5_9tnu0sE5H45_FomZH8k - 304 null text/javascript 133.8333ms
+2025-06-12 10:12:27.574 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/lib/jquery/dist/jquery.min.js - 304 null text/javascript 175.3022ms
+2025-06-12 10:12:27.583 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product13.jpg - 200 7223 image/jpeg 1308.1552ms
+2025-06-12 10:12:27.344 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product36.jpg, Response status code: 404
+2025-06-12 10:12:27.365 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product39.jpg - null null
+2025-06-12 10:12:27.413 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product38.jpg, Response status code: 404
+2025-06-12 10:12:27.386 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product37.jpg, Response status code: 404
+2025-06-12 10:12:27.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 202.8188ms
+2025-06-12 10:12:27.674 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product39.jpg - 404 0 null 309.5862ms
+2025-06-12 10:12:27.705 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product39.jpg, Response status code: 404
+2025-06-12 10:12:27.761 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product11.jpg - null null
+2025-06-12 10:12:27.760 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - null null
+2025-06-12 10:12:27.762 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - null null
+2025-06-12 10:12:27.764 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product14.jpg - null null
+2025-06-12 10:12:27.764 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product15.jpg - null null
+2025-06-12 10:12:27.780 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product11.jpg - 404 0 null 20.195ms
+2025-06-12 10:12:27.800 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product10.jpg - 404 0 null 40.6272ms
+2025-06-12 10:12:27.817 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product12.jpg - 404 0 null 55.3116ms
+2025-06-12 10:12:27.827 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product14.jpg - 404 0 null 64.4915ms
+2025-06-12 10:12:27.844 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/ProductCatalog/Product15.jpg - 404 0 null 81.648ms
+2025-06-12 10:12:27.854 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product11.jpg, Response status code: 404
+2025-06-12 10:12:27.860 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product10.jpg, Response status code: 404
+2025-06-12 10:12:27.948 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/placeholder.png - null null
+2025-06-12 10:12:27.932 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product15.jpg, Response status code: 404
+2025-06-12 10:12:27.905 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product14.jpg, Response status code: 404
+2025-06-12 10:12:27.886 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/ProductCatalog/Product12.jpg, Response status code: 404
+2025-06-12 10:12:27.974 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/placeholder.png - 404 0 null 26.3811ms
+2025-06-12 10:12:28.032 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7104/images/placeholder.png, Response status code: 404
+2025-06-12 10:12:38.923 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Register - null null
+2025-06-12 10:12:38.943 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-12 10:12:38.948 +05:30 [INF] Route matched with {action = "Register", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Register() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:12:38.973 +05:30 [INF] Executing ViewResult, running view Register.
+2025-06-12 10:12:39.014 +05:30 [INF] Executed ViewResult - view Register executed in 41.954ms.
+2025-06-12 10:12:39.024 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Register (UNIFY) in 61.9662ms
+2025-06-12 10:12:39.031 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Register (UNIFY)'
+2025-06-12 10:12:39.040 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Register - 200 null text/html; charset=utf-8 117.5181ms
+2025-06-12 10:12:39.068 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/register.css - null null
+2025-06-12 10:12:39.071 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/images/UPM/bags.png - null null
+2025-06-12 10:12:39.072 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:12:39.080 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:12:39.085 +05:30 [INF] The file /css/UPM/register.css was not modified
+2025-06-12 10:12:39.100 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 28.8538ms
+2025-06-12 10:12:39.112 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/register.css - 304 null text/css 44.1986ms
+2025-06-12 10:12:39.094 +05:30 [INF] The file /images/UPM/bags.png was not modified
+2025-06-12 10:12:39.184 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/images/UPM/bags.png - 304 null image/png 113.8052ms
+2025-06-12 10:12:39.186 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 105.6106ms
+2025-06-12 10:12:42.569 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/UPM/Login - null null
+2025-06-12 10:12:42.603 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-12 10:12:42.612 +05:30 [INF] Route matched with {action = "Login", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Login() on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:12:42.629 +05:30 [INF] Executing ViewResult, running view Login.
+2025-06-12 10:12:42.655 +05:30 [INF] Executed ViewResult - view Login executed in 26.9185ms.
+2025-06-12 10:12:42.664 +05:30 [INF] Executed action UNIFY.Controllers.UPM.Login (UNIFY) in 43.1669ms
+2025-06-12 10:12:42.673 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.Login (UNIFY)'
+2025-06-12 10:12:42.683 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/UPM/Login - 200 null text/html; charset=utf-8 116.6063ms
+2025-06-12 10:12:42.709 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:12:42.710 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:12:42.710 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/UPM/login.css - null null
+2025-06-12 10:12:42.718 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 9.2627ms
+2025-06-12 10:12:42.757 +05:30 [INF] The file /css/UPM/login.css was not modified
+2025-06-12 10:12:42.792 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 82.9792ms
+2025-06-12 10:12:42.794 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/UPM/login.css - 304 null text/css 84.801ms
+2025-06-12 10:12:51.659 +05:30 [INF] Request starting HTTP/2 POST https://localhost:7104/UPM/LoginUser - application/x-www-form-urlencoded 223
+2025-06-12 10:12:51.680 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.UPM.LoginUser (UNIFY)'
+2025-06-12 10:12:51.701 +05:30 [INF] Route matched with {action = "LoginUser", controller = "UPM"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult LoginUser(System.String, System.String) on controller UNIFY.Controllers.UPM (UNIFY).
+2025-06-12 10:12:51.885 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__identifier_0='?' (Size = 100), @__identifier_0_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[UserId], [u].[Email], [u].[Password], [u].[Role], [u].[Username]
+FROM [Users] AS [u]
+WHERE [u].[Email] = @__identifier_0 OR [u].[Username] = @__identifier_0_1
+2025-06-12 10:12:53.211 +05:30 [INF] Executing RedirectResult, redirecting to /Product/Product.
+2025-06-12 10:12:53.217 +05:30 [INF] Executed action UNIFY.Controllers.UPM.LoginUser (UNIFY) in 1510.0023ms
+2025-06-12 10:12:53.220 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.UPM.LoginUser (UNIFY)'
+2025-06-12 10:12:53.224 +05:30 [INF] Session started; Key:82c476a1-15de-b3af-eb70-1f743bbfa5b2, Id:5c9a078a-15b6-c99f-02c3-16cf43ee53e4
+2025-06-12 10:12:53.230 +05:30 [INF] Request finished HTTP/2 POST https://localhost:7104/UPM/LoginUser - 302 0 null 1570.1792ms
+2025-06-12 10:12:53.242 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Product/Product - null null
+2025-06-12 10:12:53.261 +05:30 [INF] Executing endpoint 'UNIFY.Controllers.ProductController.Product (UNIFY)'
+2025-06-12 10:12:53.272 +05:30 [INF] Route matched with {action = "Product", controller = "Product"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Product(System.String, Int32, Int32) on controller UNIFY.Controllers.ProductController (UNIFY).
+2025-06-12 10:12:53.529 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*)
+FROM [Products] AS [p]
+2025-06-12 10:12:53.583 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32), @__p_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p0].[ProductId], [p0].[CategoryId], [p0].[Description], [p0].[Name], [p0].[Price], [p0].[StockQuantity], [c].[CategoryId], [c].[Name]
+FROM (
+    SELECT [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+    FROM [Products] AS [p]
+    ORDER BY [p].[ProductId]
+    OFFSET @__p_0 ROWS FETCH NEXT @__p_1 ROWS ONLY
+) AS [p0]
+INNER JOIN [Categories] AS [c] ON [p0].[CategoryId] = [c].[CategoryId]
+ORDER BY [p0].[ProductId]
+2025-06-12 10:12:53.626 +05:30 [INF] Executing ViewResult, running view Product.
+2025-06-12 10:12:53.734 +05:30 [INF] Executed ViewResult - view Product executed in 109.1516ms.
+2025-06-12 10:12:53.743 +05:30 [INF] Executed action UNIFY.Controllers.ProductController.Product (UNIFY) in 463.8007ms
+2025-06-12 10:12:53.754 +05:30 [INF] Executed endpoint 'UNIFY.Controllers.ProductController.Product (UNIFY)'
+2025-06-12 10:12:53.763 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Product/Product - 200 null text/html; charset=utf-8 521.3226ms
+2025-06-12 10:12:53.781 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:12:53.781 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/product/productstyle.css?v=wpaE6pGr98sJekTX7vG1KLa_2aHnFQ3AHB8citFa-i8 - null null
+2025-06-12 10:12:53.781 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:12:53.807 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 28.3808ms
+2025-06-12 10:12:53.829 +05:30 [INF] Sending file. Request path: '/css/product/productstyle.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\Product\ProductStyle.css'
+2025-06-12 10:12:53.894 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/product/productstyle.css?v=wpaE6pGr98sJekTX7vG1KLa_2aHnFQ3AHB8citFa-i8 - 200 4001 text/css 112.5233ms
+2025-06-12 10:12:53.912 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 131.0698ms
+2025-06-12 10:12:58.210 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/AdminOrder - null null
+2025-06-12 10:12:58.237 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.AdminOrder (UNIFY)'
+2025-06-12 10:12:58.253 +05:30 [INF] Route matched with {action = "AdminOrder", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AdminOrder() on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-12 10:12:58.296 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderId], [o].[OrderDate], [o].[Status], [o].[TotalAmount], [o].[UserId], [u].[UserId], [u].[Email], [u].[Password], [u].[Role], [u].[Username]
+FROM [Orders] AS [o]
+INNER JOIN [Users] AS [u] ON [o].[UserId] = [u].[UserId]
+2025-06-12 10:12:58.344 +05:30 [INF] Executing ViewResult, running view AdminOrder.
+2025-06-12 10:12:58.393 +05:30 [INF] Executed ViewResult - view AdminOrder executed in 49.7796ms.
+2025-06-12 10:12:58.403 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.AdminOrder (UNIFY) in 134.3173ms
+2025-06-12 10:12:58.422 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.AdminOrder (UNIFY)'
+2025-06-12 10:12:58.429 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/AdminOrder - 200 null text/html; charset=utf-8 222.1107ms
+2025-06-12 10:12:58.458 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - null null
+2025-06-12 10:12:58.461 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Orderprocessing/OrderTable.css - null null
+2025-06-12 10:12:58.465 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/_vs/browserLink - null null
+2025-06-12 10:12:58.461 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/css/Orderprocessing/orderprocessing.css - null null
+2025-06-12 10:12:58.482 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_framework/aspnetcore-browser-refresh.js - 200 16495 application/javascript; charset=utf-8 24.8026ms
+2025-06-12 10:12:58.537 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.4999ms
+2025-06-12 10:12:58.561 +05:30 [INF] Sending file. Request path: '/css/Orderprocessing/OrderTable.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\Orderprocessing\OrderTable.css'
+2025-06-12 10:12:58.567 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Orderprocessing/OrderTable.css - 200 1962 text/css 106.7249ms
+2025-06-12 10:12:58.589 +05:30 [INF] Sending file. Request path: '/css/Orderprocessing/orderprocessing.css'. Physical path: 'C:\New\UNIFY2\UNIFY\wwwroot\css\Orderprocessing\orderprocessing.css'
+2025-06-12 10:12:58.598 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/css/Orderprocessing/orderprocessing.css - 200 1465 text/css 137.9049ms
+2025-06-12 10:13:02.229 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - null null
+2025-06-12 10:13:02.253 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:13:02.268 +05:30 [INF] Route matched with {action = "GetOrderDetails", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderDetails(Int32) on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-12 10:13:02.333 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__orderId_0
+2025-06-12 10:13:02.377 +05:30 [INF] Executing PartialViewResult, running view _OrderDetailsPartial.
+2025-06-12 10:13:02.391 +05:30 [INF] Executed PartialViewResult - view _OrderDetailsPartial executed in 14.7749ms.
+2025-06-12 10:13:02.403 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY) in 114.3914ms
+2025-06-12 10:13:02.412 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:13:02.423 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - 200 null text/html; charset=utf-8 193.8085ms
+2025-06-12 10:14:40.809 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - null null
+2025-06-12 10:14:40.835 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:14:40.845 +05:30 [INF] Route matched with {action = "GetOrderDetails", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderDetails(Int32) on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-12 10:14:40.893 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__orderId_0
+2025-06-12 10:14:40.928 +05:30 [INF] Executing PartialViewResult, running view _OrderDetailsPartial.
+2025-06-12 10:14:40.942 +05:30 [INF] Executed PartialViewResult - view _OrderDetailsPartial executed in 14.9731ms.
+2025-06-12 10:14:40.956 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY) in 94.9802ms
+2025-06-12 10:14:40.970 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:14:40.982 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - 200 null text/html; charset=utf-8 173.5789ms
+2025-06-12 10:14:45.113 +05:30 [INF] Request starting HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - null null
+2025-06-12 10:14:45.137 +05:30 [INF] Executing endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:14:45.148 +05:30 [INF] Route matched with {action = "GetOrderDetails", controller = "Order"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetOrderDetails(Int32) on controller YourNamespace.Controllers.OrderController (UNIFY).
+2025-06-12 10:14:45.197 +05:30 [INF] Executed DbCommand (26ms) [Parameters=[@__orderId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [o].[OrderItemId], [o].[OrderId], [o].[Price], [o].[ProductId], [o].[Quantity], [p].[ProductId], [p].[CategoryId], [p].[Description], [p].[Name], [p].[Price], [p].[StockQuantity]
+FROM [OrderItems] AS [o]
+INNER JOIN [Products] AS [p] ON [o].[ProductId] = [p].[ProductId]
+WHERE [o].[OrderId] = @__orderId_0
+2025-06-12 10:14:45.209 +05:30 [INF] Executing PartialViewResult, running view _OrderDetailsPartial.
+2025-06-12 10:14:45.213 +05:30 [INF] Executed PartialViewResult - view _OrderDetailsPartial executed in 4.1139ms.
+2025-06-12 10:14:45.223 +05:30 [INF] Executed action YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY) in 56.3302ms
+2025-06-12 10:14:45.227 +05:30 [INF] Executed endpoint 'YourNamespace.Controllers.OrderController.GetOrderDetails (UNIFY)'
+2025-06-12 10:14:45.230 +05:30 [INF] Request finished HTTP/2 GET https://localhost:7104/Order/GetOrderDetails?orderId=71 - 200 null text/html; charset=utf-8 117.4429ms

@@ -36,6 +36,24 @@ namespace UNIFY.Controllers
             return View();
         }
 
+        [AllowAnonymous]
+        [HttpPost]
+        public IActionResult CheckLoginStatus()
+        {
+            if (!_userService.IsUserLoggedIn(HttpContext))
+            {
+                return Json(new
+                {
+                    success = false,
+                    message = "You need to be logged in to add items to your cart.",
+                    redirectUrl = Url.Action("Login", "UPM")
+                });
+            }
+
+            return Json(new { success = true });
+        }
+
+
         [HttpPost]
         public async Task<IActionResult> ProcessCheckout([FromBody] List<Cart> cartItemsFromClient)
         {

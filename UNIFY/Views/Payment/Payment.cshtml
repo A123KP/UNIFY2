@@ -104,173 +104,175 @@
 </div>
 
 
-@section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
+    @section Scripts {
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
 
-            function showMessage(message, type = 'info') {
-                const notificationContainer = $('#notification-container');
-                const notification = $(`
-                    <div class="notification notification-${type}">
-                        ${message}
-                        <button class="close-btn">&times;</button>
-                    </div>
-                `);
+                function showMessage(message, type = 'info') {
+                    const notificationContainer = $('#notification-container');
+                    const notification = $(`
+                        <div class="notification notification-${type}">
+                            ${message}
+                            <button class="close-btn">&times;</button>
+                        </div>
+                    `);
 
-                notification.find('.close-btn').on('click', function() {
-                    $(this).parent().fadeOut(300, function() { $(this).remove(); });
-                });
+                    notification.find('.close-btn').on('click', function() {
+                        $(this).parent().fadeOut(300, function() { $(this).remove(); });
+                    });
 
-                notificationContainer.append(notification).fadeIn(300);
+                    notificationContainer.append(notification).fadeIn(300);
 
-                setTimeout(() => {
-                    notification.fadeOut(500, function() { $(this).remove(); });
-                }, 5000);
-            }
-
-            let originalButtonContent = {};
-
-            function showLoadingState(buttonId, loadingText = 'Processing...') {
-                const button = $(`#${buttonId}`);
-                if (button.length) {
-                    originalButtonContent[buttonId] = button.html();
-                    button.prop('disabled', true);
-                    button.html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ${loadingText}`);
-                }
-            }
-
-            function hideLoadingState(buttonId) {
-                const button = $(`#${buttonId}`);
-                if (button.length && originalButtonContent[buttonId]) {
-                    button.prop('disabled', false);
-                    button.html(originalButtonContent[buttonId]);
-                }
-            }
-
-            function processPayment(actionOrMethod, buttonId = null) {
-                if (!actionOrMethod) {
-                    showMessage("Payment action or method is missing.", 'danger');
-                    return;
+                    setTimeout(() => {
+                        notification.fadeOut(500, function() { $(this).remove(); });
+                    }, 5000);
                 }
 
-                if (buttonId) {
-                    showLoadingState(buttonId);
+                let originalButtonContent = {};
+
+                function showLoadingState(buttonId, loadingText = 'Processing...') {
+                    const button = $(`#${buttonId}`);
+                    if (button.length) {
+                        originalButtonContent[buttonId] = button.html();
+                        button.prop('disabled', true);
+                        button.html(`<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ${loadingText}`);
+                    }
                 }
 
-                const model = {
-                    PaymentMethod: actionOrMethod
-                };
+                function hideLoadingState(buttonId) {
+                    const button = $(`#${buttonId}`);
+                    if (button.length && originalButtonContent[buttonId]) {
+                        button.prop('disabled', false);
+                        button.html(originalButtonContent[buttonId]);
+                    }
+                }
 
-                $.ajax({
-                    url: '@Url.Action("ProcessPayment", "Payment")',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    data: JSON.stringify(model),
-                    success: function (response) {
-                        if (response.success) {
-                            showMessage(response.message, actionOrMethod === 'cancelled' ? 'info' : 'success');
-                            if (response.redirectUrl) {
-                                setTimeout(() => { window.location.href = response.redirectUrl; }, 1000);
+                function processPayment(actionOrMethod, buttonId = null) {
+                    if (!actionOrMethod) {
+                        showMessage("Payment action or method is missing.", 'danger');
+                        return;
+                    }
+
+                    if (buttonId) {
+                        showLoadingState(buttonId);
+                    }
+
+                    const model = {
+                        PaymentMethod: actionOrMethod
+                    };
+
+                    $.ajax({
+                        url: '@Url.Action("ProcessPayment", "Payment")',
+                        type: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify(model),
+                        success: function (response) {
+                            if (response.success) {
+                                //clear cart by setting as empty array
+                                localStorage.setItem("userCart", JSON.stringify([]));
+                                showMessage(response.message, actionOrMethod === 'cancelled' ? 'info' : 'success');
+                                if (response.redirectUrl) {
+                                    setTimeout(() => { window.location.href = response.redirectUrl; }, 1000);
+                                } else {
+                                    if (buttonId) hideLoadingState(buttonId);
+                                }
                             } else {
+                                showMessage('Operation failed: ' + response.message, 'danger');
                                 if (buttonId) hideLoadingState(buttonId);
                             }
-                        } else {
-                            showMessage('Operation failed: ' + response.message, 'danger');
+                        },
+                        error: function (xhr) {
+                            console.error("AJAX Error:", xhr.status, xhr.statusText, xhr.responseText);
+                            showMessage("Error processing payment: " + (xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : xhr.statusText), 'danger');
                             if (buttonId) hideLoadingState(buttonId);
                         }
-                    },
-                    error: function (xhr) {
-                        console.error("AJAX Error:", xhr.status, xhr.statusText, xhr.responseText);
-                        showMessage("Error processing payment: " + (xhr.responseJSON && xhr.responseJSON.message ? xhr.responseJSON.message : xhr.statusText), 'danger');
-                        if (buttonId) hideLoadingState(buttonId);
+                    });
+                }
+
+                $('#cardPaymentForm').submit(function (e) {
+                    e.preventDefault();
+                    processPayment('card', 'cardPayButton');
+                });
+
+                $('#upiPaymentForm').submit(function (e) {
+                    e.preventDefault();
+                    processPayment('upi', 'upiPayButton');
+                });
+
+                // --- START: MODIFIED to remove confirm() dialog ---
+                $('.cancel-button').on('click', function(e) {
+                    e.preventDefault();
+                    // The confirm() pop-up has been removed.
+                    processPayment('cancelled');
+                });
+                // --- END: MODIFIED ---
+
+                $('#confirmCodButton').click(function () {
+                    processPayment('cod', 'confirmCodButton');
+                });
+
+                // --- START: MODIFIED to remove confirm() dialog ---
+                function handleCancellation(e) {
+                    e.preventDefault(); // Prevent default link navigation
+                    // The confirm() pop-up has been removed.
+                    processPayment('cancelled');
+                }
+
+                $('.breadcrumb-item a').each(function() {
+                    if ($(this).text().trim().toLowerCase() === 'home') {
+                        // The second parameter to handleCancellation is no longer needed
+                        $(this).on('click', function(e) { handleCancellation(e); });
                     }
                 });
-            }
+                // --- END: MODIFIED ---
 
-            $('#cardPaymentForm').submit(function (e) {
-                e.preventDefault();
-                processPayment('card', 'cardPayButton');
-            });
+                $('#cardNumber').on('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    value = value.replace(/(.{4})/g, '$1 ').trim();
+                    e.target.value = value.substring(0, 19);
 
-            $('#upiPaymentForm').submit(function (e) {
-                e.preventDefault();
-                processPayment('upi', 'upiPayButton');
-            });
+                    const iconContainer = $('#card-icon-container i');
+                    let cardType = 'fa-credit-card';
+                    let opacity = 0.3;
 
-            // --- START: MODIFIED to remove confirm() dialog ---
-            $('.cancel-button').on('click', function(e) {
-                e.preventDefault();
-                // The confirm() pop-up has been removed.
-                processPayment('cancelled');
-            });
-            // --- END: MODIFIED ---
+                    if (/^4/.test(value)) {
+                        cardType = 'fa-cc-visa';
+                        opacity = 1;
+                    } else if (/^5[1-5]/.test(value)) {
+                        cardType = 'fa-cc-mastercard';
+                        opacity = 1;
+                    } else if (/^3[47]/.test(value)) {
+                        cardType = 'fa-cc-amex';
+                        opacity = 1;
+                    }
 
-            $('#confirmCodButton').click(function () {
-                processPayment('cod', 'confirmCodButton');
-            });
-
-            // --- START: MODIFIED to remove confirm() dialog ---
-            function handleCancellation(e) {
-                e.preventDefault(); // Prevent default link navigation
-                // The confirm() pop-up has been removed.
-                processPayment('cancelled');
-            }
-
-            $('.breadcrumb-item a').each(function() {
-                if ($(this).text().trim().toLowerCase() === 'home') {
-                    // The second parameter to handleCancellation is no longer needed
-                    $(this).on('click', function(e) { handleCancellation(e); });
-                }
-            });
-            // --- END: MODIFIED ---
-
-            $('#cardNumber').on('input', function (e) {
-                let value = e.target.value.replace(/\D/g, '');
-                value = value.replace(/(.{4})/g, '$1 ').trim();
-                e.target.value = value.substring(0, 19);
-
-                const iconContainer = $('#card-icon-container i');
-                let cardType = 'fa-credit-card';
-                let opacity = 0.3;
-
-                if (/^4/.test(value)) {
-                    cardType = 'fa-cc-visa';
-                    opacity = 1;
-                } else if (/^5[1-5]/.test(value)) {
-                    cardType = 'fa-cc-mastercard';
-                    opacity = 1;
-                } else if (/^3[47]/.test(value)) {
-                    cardType = 'fa-cc-amex';
-                    opacity = 1;
-                }
-
-                iconContainer.attr('class', `fab ${cardType}`).css('opacity', opacity);
-            });
-
-            $('#expiryDate').on('input', function (e) {
-                let value = e.target.value.replace(/\D/g, '');
-                if (value.length > 2) {
-                    value = value.substring(0, 2) + '/' + value.substring(2, 4);
-                }
-                e.target.value = value;
-            });
-
-            $('#cvv').on('input', function (e) {
-                let value = e.target.value.replace(/\D/g, '');
-                e.target.value = value.substring(0, 3);
-            });
-
-            var triggerTabList = [].slice.call(document.querySelectorAll('#v-pills-tab a'));
-            triggerTabList.forEach(function (triggerEl) {
-                var tabTrigger = new bootstrap.Tab(triggerEl);
-                triggerEl.addEventListener('click', function (event) {
-                    event.preventDefault();
-                    tabTrigger.show();
+                    iconContainer.attr('class', `fab ${cardType}`).css('opacity', opacity);
                 });
-            });
 
-        });
-    </script>
+                $('#expiryDate').on('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    if (value.length > 2) {
+                        value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    }
+                    e.target.value = value;
+                });
+
+                $('#cvv').on('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, '');
+                    e.target.value = value.substring(0, 3);
+                });
+
+                var triggerTabList = [].slice.call(document.querySelectorAll('#v-pills-tab a'));
+                triggerTabList.forEach(function (triggerEl) {
+                    var tabTrigger = new bootstrap.Tab(triggerEl);
+                    triggerEl.addEventListener('click', function (event) {
+                        event.preventDefault();
+                        tabTrigger.show();
+                    });
+                });
+
+            });
+        </script>
 }

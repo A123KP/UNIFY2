@@ -62,8 +62,24 @@
                 const productPrice = $button.data('product-price');
                 const productImage = $button.data('product-image');
 
-                // This now correctly calls the GLOBAL function from _Layout.cshtml
-                addProductToCartShared(productId, productName, productPrice, productImage);
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("CheckLoginStatus", "Cart")', // URL to your new action
+                    contentType: 'application/json',
+                    success: function (response) {
+
+                        if (response.success) {
+
+                            addProductToCartShared(productId, productName, productPrice, productImage);
+                        } else {
+                            alert(response.message);
+                            window.location.href = response.redirectUrl;
+                        }
+                    },
+                    error: function () {
+                        alert("An error occurred while checking your login status. Please try again.");
+                    }
+                });
             });
         });
     </script>
